@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+svg {
+  font: 10px sans-serif;
+}
+
+.background path {
+  fill: none;
+  stroke: #ccc;
+  stroke-opacity: .4;
+  shape-rendering: crispEdges;
+}
+
+.foreground path {
+  fill: none;
+  stroke: steelblue;
+  stroke-opacity: .7;
+}
+
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+.axis line, .axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  text-shadow: 0 1px 0 #fff;
+}
+
+</style>
+<body>
+<div style="margin-left: 400px;font-weight: bold;font-size: 20px"><p>NBA Season2014-15 Top50 Player Data Analysis</p></div>
+<script src="d3.js"></script>
+<script>
+
+var name_map = [];
+name_map = ["Al Jefferson", "Brandon Knight", "Carmelo Anthony", "Chris Copeland", "Chris Paul", "Damian Lillard", "DeMar DeRozan", "DeMarcus Cousins", "Deron Williams", "Derrick Favors", "Dirk Nowitzki", "Dwight Howard", "Dwyane Wade", "Gordon Hayward", "Greg Monroe", "Isaiah Thomas", "Jamal Crawford", "Jeff Green", "Jeff Teague", "Jimmy Butler", "Joe Johnson", "John Wall", "Kevin Love", "Kevin Martin", "Kyle Korver", "Kyle Lowry", "Kyrie Irving", "LaMarcus Aldridge", "Marc Gasol", "Markieff Morris", "Monta Ellis", "Nikola Vucevic", "Pau Gasol", "Reggie Jackson", "Rudy Gay", "Serge Ibaka", "Tobias Harris", "Tony Parker", "Tony Wroten", "Tyreke Evans", "Wesley Matthews", "Zach Randolph", "anthony davis", "blake griffen", "chris bosh", "jamesharden", "klay thompson", "kobe bryant", "lebron james", "steven curry"];
+
+var m = [30, 10, 10, 10],
+    w = 960 - m[1] - m[3]+450,
+    h = 500 - m[0] - m[2];
+
+var x = d3.scale.ordinal().rangePoints([0, w], .5),
+    y = {};
+
+var line = d3.svg.line(),
+    axis = d3.svg.axis().orient("left"),
+    background,
+    foreground;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", w + m[1] + m[3])
+    .attr("height", h + m[0] + m[2])
+  .append("g")
+    .attr("transform", "translate(" + m[3] + "," + m[0] +")");
+//alert(1)
+d3.csv("nba_2014-15_top50_player.csv", function(cities) {
+  //alert(cities.length)
+  // Extract the list of dimensions and create a scale for each.
+    x.domain(dimensions = d3.keys(cities[0]).filter(function(d) {
+
+      if(d=="name")return y[d]=d3.scale.ordinal().rangePoints([0, h]).domain(cities.map(function(t) { return t[d]; }).sort());
+      return d != "name" && (y[d] = d3.scale.linear()
+        .domain(d3.extent(cities, function(p) { return +p[d]; }))
+        .range([h, 0]));
+  }));
+
+  // Add grey background lines for context.
+  background = svg.append("g")
+      .attr("class", "background")
+    .selectAll("path")
+      .data(cities)
+    .enter().append("path")
+      .attr("d", path);
+
+  // Add blue foreground lines for focus.
+  foreground = svg.append("g")
+      .attr("class", "foreground")
+    .selectAll("path")
+      .data(cities)
+    .enter().append("path")
+      .attr("d", path);
+
+  // Add a group element for each dimension.
+  var g = svg.selectAll(".dimension")
+      .data(dimensions)
+    .enter().append("g")
+      .attr("class", "dimension")
+      .attr("transform", function(d) { return "translate(" + x(d) + ")"; });
+    //.attr("style","width:200px");
+  // Add an axis and title.
+  g.append("g")
+      .attr("class", "axis")
+      .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
+    .append("text")
+      .attr("text-anchor", "middle")
+      .attr("y", -9)
+      .text(String);
+
+  // Add and store a brush for each axis.
+  g.append("g")
+      .attr("class", "brush")
+      .each(function(d) { d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brush", brush)); })
+    .selectAll("rect")
+      .attr("x", -8)
+      .attr("width", 16);
+});
+
+// Returns the path for a given data point.
+function path(d) {
+  return line(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
+}
+
+// Handles a brush event, toggling the display of foreground lines.
+function brush() {
+  var texts_ = document.getElementsByTagName("text");
+    for(var j=0;j<texts_.length;j++){
+            texts_[j].setAttribute("fill",null);
+        }
+  var actives = dimensions.filter(function(p) { return !y[p].brush.empty(); }),
+      extents = actives.map(function(p) { return y[p].brush.extent(); });
+  foreground.style("display", function(d) {
+    return actives.every(function(p, i) {
+        if(p == "name"){
+            var temp;
+            for(var j=0;j<name_map.length;j++){
+                if(name_map[j] == d[p])
+                {temp = j+1;break;}
+            }
+            if(extents[i][0] <= temp*460/50 && temp*460/50 <= extents[i][1]){
+                var texts = document.getElementsByTagName("text");
+                for(var j=0;j<texts.length;j++){
+                    if(texts[j].innerHTML == d["name"]){
+                        texts[j].setAttribute("fill","red");
+                    }
+                }
+
+            }
+            else{
+                var texts = document.getElementsByTagName("text");
+                for(var j=0;j<texts.length;j++){
+                    if(texts[j].innerHTML == d["name"]){
+                        texts[j].setAttribute("fill",null);
+                    }
+                }
+            }
+            return extents[i][0] <= temp*460/50 && temp*460/50 <= extents[i][1];
+        }
+        if(extents[i][0] <= d[p] && d[p] <= extents[i][1]){
+            var texts = document.getElementsByTagName("text");
+            for(var j=0;j<texts.length;j++){
+                //texts[j].setAttribute("fill",null);
+                if(texts[j].innerHTML == d["name"]){
+                    texts[j].setAttribute("fill","red");
+                }
+            }
+
+        }
+        else{
+            var texts = document.getElementsByTagName("text");
+            for(var j=0;j<texts.length;j++){
+                if(texts[j].innerHTML == d["name"]){
+                    texts[j].setAttribute("fill",null);
+                }
+            }
+        }
+      return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+    }) ? null : "none";
+  });
+}
+
+</script>
