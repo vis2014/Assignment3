@@ -1,0 +1,517 @@
+{
+    "name": "flare",
+    "children": [
+        {
+            "name": "freedom",
+            "count": 20
+        },
+        {
+            "name": "Negro",
+            "count": 15
+        },
+        {
+            "name": "I",
+            "count": 14
+        },
+        {
+            "name": "ring",
+            "count": 12
+        },
+        {
+            "name": "dream",
+            "count": 12
+        },
+        {
+            "name": "day",
+            "count": 12
+        },
+        {
+            "name": "nation",
+            "count": 11
+        },
+        {
+            "name": "come",
+            "count": 10
+        },
+        {
+            "name": "Let",
+            "count": 9
+        },
+        {
+            "name": "one",
+            "count": 9
+        },
+        {
+            "name": "satisfied",
+            "count": 9
+        },
+        {
+            "name": "justice",
+            "count": 8
+        },
+        {
+            "name": "able",
+            "count": 8
+        },
+        {
+            "name": "all",
+            "count": 7
+        },
+        {
+            "name": "today",
+            "count": 7
+        },
+        {
+            "name": "go",
+            "count": 7
+        },
+        {
+            "name": "together",
+            "count": 7
+        },
+        {
+            "name": "you",
+            "count": 7
+        },
+        {
+            "name": "long",
+            "count": 6
+        },
+        {
+            "name": "children",
+            "count": 5
+        },
+        {
+            "name": "America",
+            "count": 5
+        },
+        {
+            "name": "faith",
+            "count": 5
+        },
+        {
+            "name": "years",
+            "count": 5
+        },
+        {
+            "name": "great",
+            "count": 5
+        },
+        {
+            "name": "white",
+            "count": 5
+        },
+        {
+            "name": "little",
+            "count": 4
+        },
+        {
+            "name": "cheque",
+            "count": 4
+        },
+        {
+            "name": "time",
+            "count": 4
+        },
+        {
+            "name": "later",
+            "count": 4
+        },
+        {
+            "name": "American",
+            "count": 4
+        },
+        {
+            "name": "men",
+            "count": 4
+        },
+        {
+            "name": "us",
+            "count": 4
+        },
+        {
+            "name": "Mississippi",
+            "count": 4
+        },
+        {
+            "name": "God",
+            "count": 4
+        },
+        {
+            "name": "hope",
+            "count": 4
+        },
+        {
+            "name": "can",
+            "count": 4
+        },
+        {
+            "name": "stand",
+            "count": 3
+        },
+        {
+            "name": "sing",
+            "count": 3
+        },
+        {
+            "name": "words",
+            "count": 3
+        },
+        {
+            "name": "never",
+            "count": 3
+        },
+        {
+            "name": "note",
+            "count": 3
+        },
+        {
+            "name": "brotherhood",
+            "count": 3
+        },
+        {
+            "name": "join",
+            "count": 3
+        },
+        {
+            "name": "injustice",
+            "count": 3
+        },
+        {
+            "name": "Georgia",
+            "count": 3
+        },
+        {
+            "name": "state",
+            "count": 3
+        },
+        {
+            "name": "One",
+            "count": 3
+        },
+        {
+            "name": "rise",
+            "count": 3
+        },
+        {
+            "name": "made",
+            "count": 3
+        },
+        {
+            "name": "hundred",
+            "count": 3
+        },
+        {
+            "name": "black",
+            "count": 3
+        },
+        {
+            "name": "land",
+            "count": 3
+        },
+        {
+            "name": "free",
+            "count": 3
+        },
+        {
+            "name": "last",
+            "count": 3
+        },
+        {
+            "name": "here",
+            "count": 3
+        },
+        {
+            "name": "valley",
+            "count": 3
+        },
+        {
+            "name": "people",
+            "count": 3
+        },
+        {
+            "name": "out",
+            "count": 3
+        },
+        {
+            "name": "rights",
+            "count": 3
+        },
+        {
+            "name": "New",
+            "count": 3
+        },
+        {
+            "name": "Now",
+            "count": 3
+        },
+        {
+            "name": "Alabama",
+            "count": 3
+        },
+        {
+            "name": "boys",
+            "count": 2
+        },
+        {
+            "name": "now",
+            "count": 2
+        },
+        {
+            "name": "discontent",
+            "count": 2
+        },
+        {
+            "name": "physical",
+            "count": 2
+        },
+        {
+            "name": "no",
+            "count": 2
+        },
+        {
+            "name": "end",
+            "count": 2
+        },
+        {
+            "name": "true",
+            "count": 2
+        },
+        {
+            "name": "suffering",
+            "count": 2
+        },
+        {
+            "name": "creative",
+            "count": 2
+        },
+        {
+            "name": "brutality",
+            "count": 2
+        },
+        {
+            "name": "struggle",
+            "count": 2
+        },
+        {
+            "name": "force",
+            "count": 2
+        },
+        {
+            "name": "if",
+            "count": 2
+        },
+        {
+            "name": "off",
+            "count": 2
+        },
+        {
+            "name": "work",
+            "count": 2
+        },
+        {
+            "name": "Mountain",
+            "count": 2
+        },
+        {
+            "name": "summer",
+            "count": 2
+        },
+        {
+            "name": "say",
+            "count": 2
+        },
+        {
+            "name": "police",
+            "count": 2
+        },
+        {
+            "name": "mountain",
+            "count": 2
+        },
+        {
+            "name": "vote",
+            "count": 2
+        },
+        {
+            "name": "believe",
+            "count": 2
+        },
+        {
+            "name": "Free",
+            "count": 2
+        },
+        {
+            "name": "colour",
+            "count": 2
+        },
+        {
+            "name": "slaves",
+            "count": 2
+        },
+        {
+            "name": "urgency",
+            "count": 2
+        },
+        {
+            "name": "moment",
+            "count": 2
+        },
+        {
+            "name": "racial",
+            "count": 2
+        },
+        {
+            "name": "new",
+            "count": 2
+        },
+        {
+            "name": "hill",
+            "count": 2
+        },
+        {
+            "name": "funds",
+            "count": 2
+        },
+        {
+            "name": "meaning",
+            "count": 2
+        },
+        {
+            "name": "would",
+            "count": 2
+        },
+        {
+            "name": "cash",
+            "count": 2
+        },
+        {
+            "name": "sons",
+            "count": 2
+        },
+        {
+            "name": "despair",
+            "count": 2
+        },
+        {
+            "name": "knowing",
+            "count": 2
+        },
+        {
+            "name": "like",
+            "count": 2
+        },
+        {
+            "name": "dignity",
+            "count": 2
+        },
+        {
+            "name": "cities",
+            "count": 2
+        },
+        {
+            "name": "content",
+            "count": 2
+        },
+        {
+            "name": "segregation",
+            "count": 2
+        },
+        {
+            "name": "places",
+            "count": 2
+        },
+        {
+            "name": "came",
+            "count": 2
+        },
+        {
+            "name": "hands",
+            "count": 2
+        },
+        {
+            "name": "girls",
+            "count": 2
+        },
+        {
+            "name": "insufficient",
+            "count": 2
+        },
+        {
+            "name": "been",
+            "count": 2
+        },
+        {
+            "name": "refuse",
+            "count": 2
+        },
+        {
+            "name": "allow",
+            "count": 2
+        },
+        {
+            "name": "former",
+            "count": 2
+        },
+        {
+            "name": "jail",
+            "count": 2
+        },
+        {
+            "name": "they",
+            "count": 2
+        },
+        {
+            "name": "brothers",
+            "count": 2
+        },
+        {
+            "name": "history",
+            "count": 2
+        },
+        {
+            "name": "live",
+            "count": 2
+        },
+        {
+            "name": "promissory",
+            "count": 2
+        },
+        {
+            "name": "tribulations",
+            "count": 2
+        },
+        {
+            "name": "destiny",
+            "count": 2
+        },
+        {
+            "name": "York",
+            "count": 2
+        },
+        {
+            "name": "Some",
+            "count": 2
+        },
+        {
+            "name": "mighty",
+            "count": 2
+        },
+        {
+            "name": "sweltering",
+            "count": 2
+        },
+        {
+            "name": "walk",
+            "count": 2
+        },
+        {
+            "name": "mountainside",
+            "count": 2
+        },
+        {
+            "name": "Proclamation",
+            "count": 1
+        }
+    ]
+}
