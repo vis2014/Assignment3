@@ -3,7 +3,7 @@
 ##Presented by Jiaozekun && Chenwenbin
 
 
-This is a visualization I have done to show the increase of Chinese population from 1982(the 4th Population Census) to 2010(the 6th Population Census) and the flow of people between different provinces.This dataset is downloaded from the website of National Bureau of Statistics.We use two kinds of graph to find more insights in these data.
+This is a visualization I have done to show the increase of Chinese population from 1982(the 3rd Population Census) to 2010(the 6th Population Census) and the flow of people between different provinces.This dataset is downloaded from the website of National Bureau of Statistics.We use two kinds of graph to find more insights in these data.
 
 ###1. Dataset:
 + We collect all the data manually on http://www.stats.gov.cn/tjsj/ndsj/renkoupucha/2000pucha/pucha.htm and http://www.stats.gov.cn/ztjc/zdtjgz/zgrkpc/dlcrkpc/.
