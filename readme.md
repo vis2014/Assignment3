@@ -12,20 +12,21 @@ This is a visualization I have done to show the increase of Chinese population f
 
 ###2. Instruction and Interaction:
 > ####The increase of population for each province
->1.The first page(population_increase.html) shows the population increase of each province,the four axes each stands for a year.
->2.I separate all the provinces into five regions in order to compare the differences among different regions.    
->3.Besides,you can drag each axis.
+>+ The first page(population_increase.html) shows the population increase of each province,the four axes each stands for a year.
+>+ I separate all the provinces into five regions in order to compare the differences among different regions.    
+>+ Besides,you can drag each axis.
 >####The flow of population among these provinces
->1.flow1.html and flow2.html each represents the population flow of a decade.I use a chord graph as a visualization.
->2.As is shown,I separate the whole ring into 32 different parts,each parts stands for a province.The angle it occupies is in proportion to its number of floating population.
->3.For each province(for each arc),the arc is separated into 31 different parts again.Each represents the number of people who move to this province,and they are sorted and listed in the clockwise direction.
->4.When mouse over a chord,the information in this chord will be displayed in a window on the right side and the chord will be lighter than any other chord in the graph.
+>+ flow1.html and flow2.html each represents the population flow of a decade.I use a chord graph as a visualization.
+>+ As is shown,I separate the whole ring into 32 different parts,each parts stands for a province.The angle it occupies is in proportion to its number of floating population.
+>+ For each province(for each arc),the arc is separated into 31 different parts again.Each represents the number of people who move to this province,and they are sorted and listed in the clockwise direction.
+>+ When mouse over a chord,the information in this chord will be displayed in a window on the right side and the chord will be lighter than any other chord in the graph.
 
 ###3.Findings and Insights
->1.From the chart which visualizes the increase,we can see that the population of most province is stable,but in CentralSouth its growth is obvious.
->2.In the chord graph which shows the population flow,we can see that there are some provinces people all want to move to,such as Guangdong,Beijing,Shanghai,Jiangsu,Zhejiang.This phenomenon may be due to their better economic level and salary.
->3.We can also find that the migration is regional.For example,we can see that the arc stands for Guangdong Province is separated into different smaller arcs.Among these arcs,the several relatively larger ones are population flows from Hunan,Guangxi,Sichuan and so on,which are all close to Guangdong.Thus we can acknowledge that people prefer to move to a nearer province than a further one.
->4.When compare the two chord graphs,we can find that the arcs which stands for Beijing,Guangdong,Shanghai,Zhejiang in the 6th Census are even larger than in the 5th Census.So we can say that in recent years people are more likely to move to so-called "北上广深".
+>+ From the chart which visualizes the increase,we can see that the population of most province is stable,but in CentralSouth its growth is obvious.
+>+ In the chord graph which shows the population flow,we can see that there are some provinces people all want to move to,such as Guangdong,Beijing,Shanghai,Jiangsu,Zhejiang.This phenomenon may be due to their better economic level and salary.
+>+ We can also find that the migration is regional.For example,we can see that the arc stands for Guangdong Province is separated into different smaller arcs.Among these arcs,the several relatively larger ones are population flows from Hunan,Guangxi,Sichuan and so on,which are all close to Guangdong.Thus we can acknowledge that people prefer to move to a nearer province than a further one.
+>+ When compare the two chord graphs,we can find that the arcs which stands for Beijing,Guangdong,Shanghai,Zhejiang in the 6th Census are even larger than in the 5th Census.So we can say that in recent years people are more likely to move to so-called "北上广深".
+
 ###4. Environment:
 + Please open the **population_increase.html** and click the links on this page to see two more graphs.As for browser,Chrome is recommended.
 
