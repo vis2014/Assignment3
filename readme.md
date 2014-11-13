@@ -15,6 +15,7 @@ This is a visualization I have done to show the increase of Chinese population f
 >+ The first page(population_increase.html) shows the population increase of each province,the four axes each stands for a year.
 >+ I separate all the provinces into five regions in order to compare the differences among different regions.    
 >+ Besides,you can drag each axis.
+
 >####The flow of population among these provinces
 >+ flow1.html and flow2.html each represents the population flow of a decade.I use a chord graph as a visualization.
 >+ As is shown,I separate the whole ring into 32 different parts,each parts stands for a province.The angle it occupies is in proportion to its number of floating population.
