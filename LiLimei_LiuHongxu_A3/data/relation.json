@@ -1,0 +1,39 @@
+{
+"nodes":[
+{ "name": "陈冠希" ,"id":0, "image" : "image/chenguanxi.png" },
+{ "name": "张柏芝" ,"id":1, "image" : "image/zhangbozhi.png" },
+{ "name": "窦鹏" , "id":2,"image" : "image/doupeng.png" },
+{ "name": "王菲" ,"id":3, "image" : "image/wangfei.png" },
+{ "name": "谢霆锋" ,"id":4, "image" : "image/xietingfeng.png" },
+{ "name": "窦唯" , "id":5,"image" : "image/douwei.png" },
+{ "name": "李亚鹏" , "id":6,"image" : "image/liyapeng.png" },
+{ "name": "周迅" , "id":7,"image" : "image/zhouxun.png" },
+{ "name": "李大齐" ,"id":8, "image" : "image/lidaqi.png" },
+{ "name": "瞿颖" ,"id":9, "image" : "image/quying.png" },
+{ "name": "高圣远" , "id":10,"image" : "image/gaoshengyuan.png" },
+{ "name": "张亚东" ,"id":11, "image" : "image/zhangyadong.png" },
+{ "name": "朴树" , "id":12,"image" : "image/pushu.png" },
+{ "name": "窦颖" ,"id":13, "image" : "image/douying.png" }
+],
+"edges":[
+{ "source": 0 , "target": 1 , "relation":"旧爱" },
+{ "source": 0 , "target": 4 , "relation":"昔日好友" },
+{ "source": 1 , "target": 4 , "relation":"离异" },
+{ "source": 2 , "target": 7 , "relation":"旧爱" },
+{ "source": 2 , "target": 5 , "relation":"堂兄弟" },
+{ "source": 3 , "target": 5 , "relation":"离异" },
+{ "source": 3 , "target": 4 , "relation":"旧爱复合" },
+{ "source": 3 , "target": 6 , "relation":"离异" },
+{ "source": 3 , "target": 11 , "relation":"制作人" },
+{ "source": 4 , "target": 7 , "relation":"绯闻" },
+{ "source": 5 , "target": 13 , "relation":"兄妹" },
+{ "source": 6 , "target": 7 , "relation":"旧爱" },
+{ "source": 6 , "target": 9 , "relation":"旧爱" },
+{ "source": 7 , "target": 8 , "relation":"旧爱" },
+{ "source": 7 , "target": 12 , "relation":"旧爱" },
+{ "source": 7 , "target": 10 , "relation":"丈夫" },
+{ "source": 9 , "target": 11 , "relation":"旧爱" },
+{ "source": 11 , "target": 12 , "relation":"制作人" },
+{ "source": 11 , "target": 13 , "relation":"离异" }
+]
+}
