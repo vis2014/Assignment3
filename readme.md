@@ -1,23 +1,32 @@
-#下面介绍github的使用方法：
-###1. github地址：[Assignment3](https://github.com/vis2014/Assignment3).
+#Chinese population growth and flow analysis
 
-###2. 安装git：
-+ git工具用来获取远程代码以及提交代码。
-+ 下载地址： [git](http://git-scm.com/downloads) 。
+##Presented by Jiaozekun && Chenwenbin
 
-###3. 获取github上的代码：
-+ 在一个单独的文件夹中，例如E:\git，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git clone https://github.com/vis2014/Assignment3.git		//克隆代码,username是vis2014@163.com, password是vis_2014
-+ cd Assignment3		//进入文件夹Assignment3
-+ git checkout –b *local_name* origin/master	//创建自己的分支，*注意*：local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3 
 
-###4. 在Assignment3文件夹中放入自己的完整的代码，包括引用的javascript库等
+This is a visualization I have done to show the increase of Chinese population from 1982(the 4th Population Census) to 2010(the 6th Population Census) and the flow of people between different provinces.This dataset is downloaded from the website of National Bureau of Statistics.We use two kinds of graph to find more insights in these data.
 
-###5. 修改readme.md文件，在该文件里写作业的介绍，编写该文件使用的是markdown语法，可以上网上查语法格式，也可以参考这篇文章[markdown语法说明](http://wowubuntu.com/markdown/basic.html)
+###1. Dataset:
++ We collect all the data manually on http://www.stats.gov.cn/tjsj/ndsj/renkoupucha/2000pucha/pucha.htm and http://www.stats.gov.cn/ztjc/zdtjgz/zgrkpc/dlcrkpc/.
++ From the above data,we can acknowledge the population of each province in 1982,1990,2000 and 2010.
++ The data of population flow between 1990-2000 and 2000-2010 can be found on the websites.But the data for 1982-1990 is hard to access for there is no excel file at that time.
 
-###6. 在以上步骤完成之后可以上传代码，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git add . 	//添加文件
-+ git commit -m "注释" //提交到本地
-+ git push origin *local_name*	//*注意*：和第三步一样，local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3，要和上面的local_name保持一致,username是vis2014@163.com, password是vis_2014
+###2. Instruction and Interaction:
+> ####The increase of population for each province
+>1.The first page(population_increase.html) shows the population increase of each province,the four axes each stands for a year.
+>2.I separate all the provinces into five regions in order to compare the differences among different regions.    
+>3.Besides,you can drag each axis.
+>####The flow of population among these provinces
+>1.flow1.html and flow2.html each represents the population flow of a decade.I use a chord graph as a visualization.
+>2.As is shown,I separate the whole ring into 32 different parts,each parts stands for a province.The angle it occupies is in proportion to its number of floating population.
+>3.For each province(for each arc),the arc is separated into 31 different parts again.Each represents the number of people who move to this province,and they are sorted and listed in the clockwise direction.
+>4.When mouse over a chord,the information in this chord will be displayed in a window on the right side and the chord will be lighter than any other chord in the graph.
 
-###7. 这时再次查看github的代码，[Assignment3](https://github.com/vis2014/Assignment3)，在自己的分支里就可以看到自己的代码了
+###3.Findings and Insights
+>1.From the chart which visualizes the increase,we can see that the population of most province is stable,but in CentralSouth its growth is obvious.
+>2.In the chord graph which shows the population flow,we can see that there are some provinces people all want to move to,such as Guangdong,Beijing,Shanghai,Jiangsu,Zhejiang.This phenomenon may be due to their better economic level and salary.
+>3.We can also find that the migration is regional.For example,we can see that the arc stands for Guangdong Province is separated into different smaller arcs.Among these arcs,the several relatively larger ones are population flows from Hunan,Guangxi,Sichuan and so on,which are all close to Guangdong.Thus we can acknowledge that people prefer to move to a nearer province than a further one.
+>4.When compare the two chord graphs,we can find that the arcs which stands for Beijing,Guangdong,Shanghai,Zhejiang in the 6th Census are even larger than in the 5th Census.So we can say that in recent years people are more likely to move to so-called "北上广深".
+###4. Environment:
++ Please open the **population_increase.html** and click the links on this page to see two more graphs.As for browser,Chrome is recommended.
+
+See further information, click [here](http://211.147.15.14/UCAS_14_Fall/index.php/Jiaozekun_Chenwenbin_A3).

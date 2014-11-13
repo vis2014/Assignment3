@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Chord</title>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+</head>
+
+<style>
+
+    #tooltip {
+        position: absolute;
+        left:1000px;
+        top:400px;
+        width: 250px;
+        height: 200px;
+        padding: 10px;
+        background-color: lightskyblue;
+        border-radius: 10px;
+        box-shadow: 4px 4px 10px rgba(200, 200,200, 0.4);
+    }
+    .chord path {
+        fill-opacity: 0.67;
+        stroke: #000;
+        stroke-width: 0.5px;
+    }
+
+    /*body{*/
+        /*background-image: url(back.jpg);*/
+    /*}*/
+    head{
+        font: Arial;
+        font-weight: bolder;
+    }
+</style>
+<body>
+
+<h1 id="head"><strong>China's population flow shown in the 6th Census.</strong></h1>
+
+<div id="tooltip" class="hidden">
+    <p id="name">The fluctuation between <strong><span id="name1"></span></strong>and<strong><span id="name2"></span></strong>is :</p>
+    <p> <span id="name3"></span>------><span id="name4"></span>:<span id="num1"></span>万人。</p>
+    <p> <span id="name5"></span>------><span id="name6"></span>:<span id="num2"></span>万人。</p>
+
+</div>
+
+<script type="text/javascript" src="flow1.js"></script>
+
+</body>
+</html>

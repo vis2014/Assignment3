@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+    <style type="text/css">
+
+        svg {
+            font-size: 14px;
+        }
+
+        .foreground path {
+            fill: none;
+            stroke-opacity: 0.5;
+            stroke-width: 1.5px;
+        }
+
+        .foreground path.fade {
+            stroke: #000;
+            stroke-opacity: .05;
+        }
+
+
+        .legend {
+            font-size: 18px;
+            font-style: oblique;
+        }
+
+        .legend line {
+            stroke-width: 2px;
+        }
+
+        .NorthChina {
+            stroke: #800;
+        }
+
+        .NorthEastChina {
+            stroke: #080;
+        }
+
+        .EastChina {
+            stroke: #2344ff;
+        }
+
+        .CentralSouth {
+            stroke: #6b238E;
+        }
+
+
+
+        .SouthWest{
+            stroke: #000000;
+        }
+
+        .NorthWestChina{
+            stroke: #ff7f00;
+        }
+
+
+
+        .brush .extent {
+            fill-opacity: .3;
+            stroke: #fff;
+            shape-rendering: crispEdges;
+        }
+
+        .axis line, .axis path {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .axis text {
+            text-shadow: 0 1px 0 #fff;
+            cursor: move;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <h2 style="z-index: 100;">
+    The trends of total <i>provincial</i> population in China.<br>
+    Dataset From China's Audit Office.<br>
+    And here are two charts which visualize the population fluctuation:<br>
+        <a href="flow1.html" target="_blank" title="fluctuation">Population Fluctuation shown in the 5th Census.</a><br>
+        <a href="flow2.html" target="_blank" title="fluctuation">Population Fluctuation shown in the 6th Census.</a>    <!--<a href="javascript:void 0" onclick="window.open('multivariate/chord.html')">人员管理</a>-->
+    </h2>
+</div>
+<script type="text/javascript" src="d3/d3.v3.js"></script>
+<script type="text/javascript" src="d3/d3.csv.js"></script>
+<script type="text/javascript">
+
+    var species = ["NorthChina","NorthEastChina","EastChina","CentralSouth","SouthWest","NorthWestChina" ],
+            traits = ["Year1982","Year1990","Year2000", "Year2010"];
+    var m = [80, 160, 200, 160],
+            w = 1280 - m[1] - m[3],
+            h = 800 - m[0] - m[2];
+
+    var x = d3.scale.ordinal().domain(traits).rangePoints([0, w]),//Sets the output range from the specified continuous interval.
+    // The array interval contains two elements representing the minimum and maximum numeric value.
+    // This interval is subdivided into n evenly-spaced points, where n is the number of (unique) values in the input domain
+            y = {};
+
+    //此处定义了两个轴，x为水平方向的，而y为一个对象，代表垂直方向的轴，之后定义了y[traits],每一个代表一个traits的轴
+
+    var line = d3.svg.line(),//Constructs a new line generator with the default x- and y-accessor functions
+    // (that assume the input data is a two-element array of numbers
+            axis = d3.svg.axis().orient("left"),// vertical axis with ticks to the left of the domain path
+            foreground;
+
+    var svg = d3.select("body").append("svg:svg")
+            .attr("width", w + m[1] + m[3])
+            .attr("height", h + m[0] + m[2])
+            .append("svg:g")
+            .attr("transform", "translate(" + m[3] + "," + m[0] + ")");//将svg中的g元素
+    //移动，translate（200,80）
+
+    d3.csv("population.csv", function(flowers) {
+
+
+       // # d3.csv(url[, accessor][, callback])
+       // Issues an HTTP GET request for the comma-separated values (CSV) file at the specified url.
+       // The file contents are assumed to be RFC4180-compliant. The mime type of the request will be
+       // "text/csv". The request is processed asynchronously,
+       // such that this method returns immediately after opening the request.
+       // When the CSV data is available, the specified callback will be invoked
+       // with the parsed rows as the argument. If an error occurs,
+       // the callback function will instead be invoked with null.
+       // An optional accessor function may be specified,
+       // which is then passed to d3.csv.parse;
+       // the accessor may also be specified by using the return request object’s row function
+
+
+        // Create a scale and brush for each trait.
+        traits.forEach(function(d) {
+            // Coerce values to numbers.
+            flowers.forEach(function(p) { p[d] = +p[d]; });//将从csv中读取的字符串换为数，
+            //此处的d为traits，而p代表的是flowers，flowers为d3.csv的一个callback function的参数
+            //flower=the parsed rows
+            y[d] = d3.scale.linear()
+                    .domain([0,10000])//此时的flower中存的是数值
+                    //确定了每一列的最大最小值，作为domain
+//                    .domain([0,10])
+                    .range([h, 0]);
+
+//            # d3.extent(array[, accessor])
+//
+//            Returns the minimum and maximum value in the given array using natural order.
+//            This is equivalent to calling d3.min and d3.max simultaneously.
+
+
+            y[d].brush = d3.svg.brush()
+
+      //# brush.y([scale])
+     //Gets or sets the y-scale associated with the brush. If scale is specified, sets the y-
+  //scale to the specified scale and returns the brush;
+                    .y(y[d]) //此处使用d（some trait）的y【d】亦即纵轴来作为
+                    .on("brush", brush);
+        });
+
+//        Add a legend.
+        var legend = svg.selectAll("g.legend")
+                .data(species)
+                .enter().append("svg:g")
+                .attr("class", "legend")
+                .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 584) + ")"; });
+
+        legend.append("svg:line")
+                .attr("class", String)
+                .attr("x2", 8);//此处的x2代表图例的终点
+
+        legend.append("svg:text")
+                .attr("x", 12)
+                .attr("dy", ".31em")
+                .text(function(d) { return d; });
+
+        // Add foreground lines.
+        foreground = svg.append("svg:g")
+                .attr("class", "foreground")
+                .selectAll("path")
+                .data(flowers)
+                .enter().append("svg:path")
+                .attr("d", path)
+                .attr("class", function(d) { return d.species; });
+
+        // Add a group element for each trait.
+        var g = svg.selectAll(".trait")
+                .data(traits)
+                .enter().append("svg:g")
+                .attr("class", "trait")
+                .attr("transform", function(d) { return "translate(" + x(d) + ")"; })
+                //此处的x（d）分别为每个trait对应的轴的x坐标，在之前的var x中加以定义
+                .call(d3.behavior.drag()
+                        .origin(function(d) { return {x: x(d)}; })//记录起始的x坐标
+                        .on("dragstart", dragstart)
+                        .on("drag", drag)
+                        .on("dragend", dragend));
+
+        // Add an axis and title.
+        g.append("svg:g")
+                .attr("class", "axis")
+                .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
+                .append("svg:text")
+                .attr("text-anchor", "middle")
+                .attr("y", -9)//此处为text的属性
+                .text(String);
+
+        // Add a brush for each axis.
+        g.append("svg:g")
+                .attr("class", "brush")
+                .each(function(d) { d3.select(this).call(y[d].brush); })
+                .selectAll("rect")
+                .attr("x", -8)
+                .attr("width", 16);//限定可以brush的范围
+
+        function dragstart(d) {
+            i = traits.indexOf(d);
+        }
+
+        function drag(d) {
+            x.range()[i] = d3.event.x;
+            traits.sort(function(a, b) { return x(a) - x(b); });
+            g.attr("transform", function(d) { return "translate(" + x(d) + ")"; });
+            foreground.attr("d", path);
+        }
+
+        function dragend(d) {
+            x.domain(traits).rangePoints([0, w]);
+            var t = d3.transition().duration(500);
+            t.selectAll(".trait").attr("transform", function(d) { return "translate(" + x(d) + ")"; });
+            t.selectAll(".foreground path").attr("d", path);
+        }
+    });
+
+    // Returns the path for a given data point.
+    function path(d) {
+        return line(traits.map(function(p) { return [x(p), y[p](d[p])]; }));
+    }
+
+    // Handles a brush event, toggling the display of foreground lines.
+    function brush() {
+        var actives = traits.filter(function(p) { return !y[p].brush.empty(); }),
+             extents = actives.map(function(p) { return y[p].brush.extent(); });
+        foreground.classed("fade", function(d) {
+            return !actives.every(function(p, i) {
+                return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+            });
+        });
+
+    }
+
+
+</script>
+</body>
+</html>
