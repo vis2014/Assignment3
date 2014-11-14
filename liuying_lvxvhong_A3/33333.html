@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+    svg {
+        font: 10px sans-serif;
+    }
+
+    .background path {
+        fill: none;
+        stroke: #ccc;
+        stroke-opacity: .4;
+        shape-rendering: crispEdges;
+    }
+
+    .foreground path {
+        fill: none;
+        stroke: yellow;
+        stroke-opacity: .7;
+    }
+
+    .brush .extent {
+        fill-opacity: .3;
+        stroke: #fff;
+        shape-rendering: crispEdges;
+    }
+
+    .axis line, .axis path {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    .axis text {
+        text-shadow: 0 1px 0 #fff;
+    }
+
+</style>
+<body>
+<div style="margin-left: 400px;font-weight: bold;font-size: 20px"><p>车辆数据指标分析</p></div>
+<script src="d3.js"></script>
+<script>
+
+    var name_map = [];
+    name_map = ["XML6502J28N",
+        "XML6532J28N",
+        "XMQ6501EEB4",
+        "XMQ6501EEB4C",
+        "XMQ6531EEB4",
+        "ZN6441V1B4",
+        "ZN6441V1W4",
+        "ZN6461WAX",
+        "ZN6462W1E4",
+        "BJ6400L3R2N",
+        "EQ6411PFCNG",
+        "SC6406A4CNG",
+        "SC6406AV4CNG",
+        "SC6450KQ42CNG",
+        "SQR6440K067/N",
+        "SY6513U4ST1BH",
+        "SY6513U4ST1BH",
+        "EQ6400PFCNG",
+        "SC6399GCNG",
+        "EQ6400LF16",
+        "DFA6400W30QDB",
+        "LF6401CNG",
+        "HFJ6392BE4S",
+        "DC7164RTAM",
+        "DC7164RTBM",
+        "MR7182K07N",
+        "DFM7160B1ECNG",
+        "DFM7160B1F1",
+        "DN7156MQNS",
+        "DN7160MQN4B",
+        "DC7163RT",
+        "CA7165MTE4C",
+        "QCJ7150A6/CNG",
+        "QCJ7160A4/CNG",
+        "HMC7165A4S0",
+        "HFC7150BNF",
+        "FV7160BBMGC",
+        "FV7160FCG",
+        "JL7151K01N",
+        "SY7150E1STBAB",
+        "SY7150X1STBAB",
+        "LF7152/CNG",
+        "BH7183FMY",
+        "BH7183FMY",
+        "BH7200FMY",
+        "SQR7164A150/N",
+        "SQR7163A210/N",
+        "YQZ7140C4",
+        "YQZ7162C4",
+        "SVW7182RQD",
+        "DC7165RTAM",
+        "CC7150CE07",
+        "SC7165A",
+        "CA7150BUE4M",
+        "CA7160UE4M",
+        "BH7162FMY",
+        "BH7162FMZ",
+        "JL7181K03N",
+        "JL7181K05N",
+        "SC7151A4CNG",
+        "CA4163P1K2NE5A80",
+        "CA4226P1K15T3NE5A80",
+        "CA4253P1K15T1NE5A80",
+        "CA4258P2K15T1NE5A80",
+        "CGC4253N52BA",
+        "HFC4241P1N5C29V",
+        "SQR4182N6Z",
+        "SX4188NR361T",
+        "SX4258NT299TL",
+        "SX4258NT299TL",
+        "SXQ4251M7N1-5",
+        "ZJZ4250NPT4AZ4",
+        "ZJZ4250NPT4AZ4",
+        "BJ4253SNFCB-AA",
+        "BJ4253SNFCB-AB",
+        "BJ4253SNFCB-AB",
+        "BJ4253SNFCB-AC",
+        "CA4226P1K15T3NA80",
+        "CA4226P2K15T3NA80",
+        "CA4226P2K15T3NE5A80",
+        "CA4250P66T1A2E22M4",
+        "CA4253P1K15T1NA80",
+        "CA4258P2K15T1NA80",
+        "CGC4253N43CA",
+        "CGC4253N4XB",
+        "CGC4253WN4XC",
+        "CGC4253WN4XC",
+        "CQ4256HTG384T",
+    ];
+
+    var m = [30, 10, 10, 10],
+            w = 960 - m[1] - m[3]+450,
+            h = 500 - m[0] - m[2];
+
+    var x = d3.scale.ordinal().rangePoints([0, w], .5),
+            y = {};
+
+    var line = d3.svg.line(),
+            axis = d3.svg.axis().orient("left"),
+            background,
+            foreground;
+
+    var svg = d3.select("body").append("svg")
+            .attr("width", w + m[1] + m[3])
+            .attr("height", h + m[0] + m[2])
+            .append("g")
+            .attr("transform", "translate(" + m[3] + "," + m[0] +")");
+    //alert(1)
+    d3.csv("车辆数据.csv", function(cities) {
+        //alert(cities.length)
+        // Extract the list of dimensions and create a scale for each.
+        x.domain(dimensions = d3.keys(cities[0]).filter(function(d) {
+
+            if(d=="name")return y[d]=d3.scale.ordinal().rangePoints([0, h]).domain(cities.map(function(t) { return t[d]; }).sort());
+            return d != "name" && (y[d] = d3.scale.linear()
+                            .domain(d3.extent(cities, function(p) { return +p[d]; }))
+                            .range([h, 0]));
+        }));
+
+        // Add grey background lines for context.
+        background = svg.append("g")
+                .attr("class", "background")
+                .selectAll("path")
+                .data(cities)
+                .enter().append("path")
+                .attr("d", path);
+
+        // Add blue foreground lines for focus.
+        foreground = svg.append("g")
+                .attr("class", "foreground")
+                .selectAll("path")
+                .data(cities)
+                .enter().append("path")
+                .attr("d", path);
+
+        // Add a group element for each dimension.
+        var g = svg.selectAll(".dimension")
+                .data(dimensions)
+                .enter().append("g")
+                .attr("class", "dimension")
+                .attr("transform", function(d) { return "translate(" + x(d) + ")"; });
+        //.attr("style","width:200px");
+        // Add an axis and title.
+        g.append("g")
+                .attr("class", "axis")
+                .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
+                .append("text")
+                .attr("text-anchor", "middle")
+                .attr("y", -9)
+                .text(String);
+
+        // Add and store a brush for each axis.
+        g.append("g")
+                .attr("class", "brush")
+                .each(function(d) { d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brush", brush)); })
+                .selectAll("rect")
+                .attr("x", -8)
+                .attr("width", 16);
+    });
+
+    // Returns the path for a given data point.
+    function path(d) {
+        return line(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
+    }
+
+    // Handles a brush event, toggling the display of foreground lines.
+    function brush() {
+        var texts_ = document.getElementsByTagName("text");
+        for(var j=0;j<texts_.length;j++){
+            texts_[j].setAttribute("fill",null);
+        }
+        var actives = dimensions.filter(function(p) { return !y[p].brush.empty(); }),
+                extents = actives.map(function(p) { return y[p].brush.extent(); });
+        foreground.style("display", function(d) {
+            return actives.every(function(p, i) {
+                if(p == "name"){
+                    var temp;
+                    for(var j=0;j<name_map.length;j++){
+                        if(name_map[j] == d[p])
+                        {temp = j+1;break;}
+                    }
+                    if(extents[i][0] <= temp*460/50 && temp*460/50 <= extents[i][1]){
+                        var texts = document.getElementsByTagName("text");
+                        for(var j=0;j<texts.length;j++){
+                            if(texts[j].innerHTML == d["name"]){
+                                texts[j].setAttribute("fill","blue");
+                            }
+                        }
+
+                    }
+                    else{
+                        var texts = document.getElementsByTagName("text");
+                        for(var j=0;j<texts.length;j++){
+                            if(texts[j].innerHTML == d["name"]){
+                                texts[j].setAttribute("fill",null);
+                            }
+                        }
+                    }
+                    return extents[i][0] <= temp*460/50 && temp*460/50 <= extents[i][1];
+                }
+                if(extents[i][0] <= d[p] && d[p] <= extents[i][1]){
+                    var texts = document.getElementsByTagName("text");
+                    for(var j=0;j<texts.length;j++){
+                        //texts[j].setAttribute("fill",null);
+                        if(texts[j].innerHTML == d["name"]){
+                            texts[j].setAttribute("fill","blue");
+                        }
+                    }
+
+                }
+                else{
+                    var texts = document.getElementsByTagName("text");
+                    for(var j=0;j<texts.length;j++){
+                        if(texts[j].innerHTML == d["name"]){
+                            texts[j].setAttribute("fill",null);
+                        }
+                    }
+                }
+                return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+            }) ? null : "none";
+        });
+    }
+</script>
