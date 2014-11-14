@@ -5,7 +5,7 @@
 ###2. The file includes:
 
 + city.html: The main html.
-+ d3.j.: D3 library.
++ d3.js.: D3 library.
 + city.js: The D3 script to read network data and create visualization.
 + city.json: Data of the GDP of Chinese cities in 2013.
 
