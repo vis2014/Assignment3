@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Bjair</title>
+
+<!-- SlickGrid -->
+<link rel="stylesheet" href="./slickgrid/slick.grid.css" type="text/css"/>
+<link rel="stylesheet" href="./slickgrid/jquery-ui-1.8.16.custom.css" type="text/css"/>
+<link rel="stylesheet" href="./slickgrid/examples.css" type="text/css"/>
+<link rel="stylesheet" href="./slickgrid/slick.pager.css" type="text/css"/>
+<script src="./slickgrid/jquery-1.7.min.js"></script>
+<script src="./slickgrid/jquery.event.drag-2.0.min.js"></script>
+<script src="./slickgrid/slick.core.js"></script>
+<script src="./slickgrid/slick.grid.js"></script>
+<script src="./slickgrid/slick.pager.js"></script>
+<script src="./slickgrid/slick.dataview.js"></script>
+<!-- End SlickGrid -->
+
+<link rel="stylesheet" type="text/css" href="./css/d3.parcoords.css">
+<link rel="stylesheet" type="text/css" href="./css/bjair.css">
+<script src="./js/d3.min.js"></script>
+<script src="./js/d3.parcoords.js"></script>
+<script src="./js/underscore.js"></script>
+<script src="./js/divgrid.js"></script>
+<script src="./js/bjair.js"></script>
+<div id="bjair" class="parcoords" style="height:240px;"></div>
+<div id="grid"></div>
+<div id="pager"></div>
+<div id="notice">公告栏</div>
+<script>
+/*load parcoords model*/
+var parcoords = d3.parcoords()("#bjair")
+  .alpha(0.1)
+  .mode("queue") // progressive rendering
+  .height(d3.max([document.body.clientHeight-326, 220]))
+  .margin({
+    top: 36,
+    left: 0,
+    right: 0,
+    bottom: 16
+  });
+
+// load csv file and create the chart
+d3.csv('./data/bj.csv', function(data) {
+
+  // slickgrid needs each data element to have an id
+  data.forEach(function(d,i) { d.id = d.id || i; });
+  //load data 
+  parcoords
+    .data(data)
+    .render()
+    .reorderable()
+    .brushMode("1D-axes");
+
+  // setting up grid
+  var column_keys = d3.keys(data[0]);
+  var columns = column_keys.map(function(key,i) {
+    return {
+      id: key,
+      name: key,
+      field: key,
+      sortable: true
+    }
+  });
+  //options 
+  var options = {
+    enableCellNavigation: true,
+    enableColumnReorder: false,
+    multiColumnSort: false
+  };
+  //init slick model
+  var dataView = new Slick.Data.DataView();
+  var grid = new Slick.Grid("#grid", dataView, columns, options);
+  var pager = new Slick.Controls.Pager(dataView, grid, $("#pager"));
+
+  // wire up model events to drive the grid
+  dataView.onRowCountChanged.subscribe(function (e, args) {
+    grid.updateRowCount();
+    grid.render();
+  });
+
+  dataView.onRowsChanged.subscribe(function (e, args) {
+    grid.invalidateRows(args.rows);
+    grid.render();
+  });
+
+  // column sorting
+  var sortcol = column_keys[0];
+  var sortdir = 1;
+
+  function comparer(a, b) {
+    var x = a[sortcol], y = b[sortcol];
+    return (x == y ? 0 : (x > y ? 1 : -1));
+  }
+  
+  // click header to sort grid column
+  grid.onSort.subscribe(function (e, args) {
+    sortdir = args.sortAsc ? 1 : -1;
+    sortcol = args.sortCol.field;
+
+    if ($.browser.msie && $.browser.version <= 8) {
+      dataView.fastSort(sortcol, args.sortAsc);
+    } else {
+      dataView.sort(comparer, args.sortAsc);
+    }
+  });
+
+  // highlight row in chart
+  grid.onMouseEnter.subscribe(function(e,args) {
+    var i = grid.getCellFromEvent(e).row;
+    var d = parcoords.brushed() || data;
+    var flag , sentence;
+    if(d[i].AQI < 50)
+      flag = 0;
+    else if(d[i].AQI < 100)
+      flag = 1;
+    else if(d[i].AQI < 200)
+      flag = 2;
+    else if(d[i].AQI < 300)
+      flag = 3;
+    else if(d[i].AQI < 400)
+      flag = 4;
+    else
+      flag = 5;
+    switch (flag)
+    {
+    case 0:
+      sentence = sentences_50[parseInt(Math.random() * 10 % 2)];
+      break;
+    case 1:
+      sentence = sentences_100[0];
+      break;
+    case 2:
+      sentence = sentences_200[0];
+      break;
+    case 3:
+      sentence = sentences_300[parseInt(Math.random() * 10 % 3)];
+      break;
+    case 4:
+      sentence = sentences_400[parseInt(Math.random() * 10 % 3)];
+      break;
+    case 5:
+      sentence = sentences_500[parseInt(Math.random() * 10 % 3)];
+      break;
+    }
+    d3.select("#notice").text(sentence);
+    
+    parcoords.highlight([d[i]]);
+  });
+  grid.onMouseLeave.subscribe(function(e,args) {
+    parcoords.unhighlight();
+  });
+
+  // fill grid with data
+  gridUpdate(data);
+
+  // update grid on brush
+  parcoords.on("brush", function(d) {
+    console.log("update" + d.length);
+    console.log("update" + d[0].Location);
+    gridUpdate(d);
+  });
+
+  function gridUpdate(data) {
+    dataView.beginUpdate();
+    dataView.setItems(data);
+    dataView.endUpdate();
+  };
+
+});
+
+</script>
+</html>
