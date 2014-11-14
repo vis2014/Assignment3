@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<meta charset="utf-8">
+<title>Resizable Word Cloud Generator For Chinese</title>
+
+<link href="cloud.css" rel="stylesheet">
+</HEAD>
+<script language="javascript" src="JS/prototype.js"></script>
+<script language="javascript" src="JS/resizeDiv.js"></script>
+
+<BODY>
+<script type="text/javascript">
+    var beforeWords;
+    function goback2select(){
+        //alert(beforeWords);
+        load(beforeWords);
+        document.getElementById("gob2b").style.visibility = "hidden";
+        document.getElementById("go").style.visibility = "visible";
+
+    }
+</script>
+<div style="text-align: center;">
+    <div id="vis"class="resizeMe" style="margin-left: auto; margin-right: auto"></div>
+    <button id="gob2b" style="visibility:hidden" onclick="goback2select()">Go back</button>
+</div>
+
+<form id="form">
+    <div style="text-align: center">
+        <div id="presets"></div>
+        <div id="custom-area">
+            <p><button id="go" type="submit">Generate</button></p>
+            <p><textarea id="text"></textarea></p>
+        </div>
+    </div>
+    <div style="float: right; text-align: right">
+        <p><label for="font">Font:</label> <input type="text" id="font" value="Microsoft YaHei">
+        <p><label for="max">Number of words:</label> <input type="number" value="250" min="1" id="max">
+    </div>
+
+    <div style="float: left">
+        <p><label>Spiral:</label>
+            <label for="archimedean"><input type="radio" name="spiral" id="archimedean" value="archimedean" checked="checked"> Archimedean</label>
+            <label for="rectangular"><input type="radio" name="spiral" id="rectangular" value="rectangular"> Rectangular</label>
+        <p><label for="scale">Scale:</label>
+            <label for="scale-log"><input type="radio" name="scale" id="scale-log" value="log" checked="checked"> log n</label>
+            <label for="scale-sqrt"><input type="radio" name="scale" id="scale-sqrt" value="sqrt"> √n</label>
+            <label for="scale-linear"><input type="radio" name="scale" id="scale-linear" value="linear"> n</label>
+
+    </div>
+
+    <div id="angles">
+        <p><input type="number" id="angle-count" value="5" min="1"> <label for="angle-count">orientations</label>
+            <label for="angle-from">from</label> <input type="number" id="angle-from" value="-60" min="-90" max="90"> °
+            <label for="angle-to">to</label> <input type="number" id="angle-to" value="60" min="-90" max="90"> °
+    </div>
+
+
+</form>
+<script src="JS/d3.js"></script>
+<script src="JS/unicode.js"></script>
+<script src="JS/d3.layout.cloud.js"></script>
+<script src="JS/cloud.js"></script>
+</BODY>
+</HTML>
