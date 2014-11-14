@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿The GDP of Chinese cities in 2013
+﻿﻿﻿﻿﻿﻿The GDP of Chinese cities in 2013
 ============
 ###1. GithubAddress：[liuzengchaoqian_xiaozhibin_A3](https://github.com/vis2014/Assignment3/tree/liuzengchaoqian_xiaozhibin_A3).
 
@@ -12,8 +12,8 @@
 
 ###3. Analysis of the Network Visualization
 + `The different sizes of the circles show the different amounts of GDP.`the larger the circle is ,the higher the city's GDP is. from the picture we can learn the GDP in eastern region is higher than the other region's.
-+ When the mouse moving over the picture, `the related area will be highlighted by yellow color.`
-+ Besides, we can `click the related area to enlarge this area for detail information, and click again to return`.
++ When the mouse moving over the picture, `the related area will be highlighted by the yellow color.`
++ Besides, we can `click the related area to enlarge this area for details, and click again to return`.
 
 ###4. Data
 + Data type: JSON.
