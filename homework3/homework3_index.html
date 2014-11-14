@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 14px sans-serif;
+  font-family: "Courier New";
+}
+text{
+	 font-family: "Courier New";
+}
+table{
+	background:seagreen;
+	#border:1px solid;
+}
+svg {
+  background:darkseagreen;
+  font: 14px 'Open Sans';
+  
+}
+.bar{
+fill:green;	
+}
+.bbar{
+fill:mediumorchid;	
+}
+
+rect:hover {  fill:blue; }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+/*
+.x.axis path {
+  display: none;
+}*/
+
+
+.line1:hover{
+	stroke:steelblue;
+}
+.line2:hover{
+	stroke:steelblue;
+}
+.line3:hover{
+	stroke:steelblue;
+}
+.line4:hover{
+	stroke:steelblue;
+}
+.line1 {
+  fill: none;
+  stroke: green;
+  stroke-width: 1.5px;
+}
+.line2{
+  fill: none;
+  stroke: red;
+  stroke-width: 1.5px;
+}
+.line3{
+  fill: none;
+  stroke: black;
+  stroke-width: 1.5px;
+}
+.line4{
+  fill: none;
+  stroke: yellow;
+  stroke-width: 1.5px;
+}
+
+</style>
+<body>
+<div>
+<table  width = "960" >
+<tr>
+<td width="300px"><strong>Display mode:</strong> <input id="show_1" type="checkbox" name="mode" onclick="choose_show(1)" checked>Line <input id="show_2" type="checkbox" name="mode" onclick="choose_show(2)" checked>Bar</td>
+<td><strong>Show muti-prices:</strong> <input id="choose_1" checked type="checkbox" onclick="choose_line(1)">Open price <input id="choose_2" checked type="checkbox" onclick="choose_line(2)">Highest price <input id="choose_3" checked type="checkbox" onclick="choose_line(3)">Lowest price <input id="choose_4" checked type="checkbox" onclick="choose_line(4)">Close price</td>
+</table>
+
+</div>
+<script src="d3.js"></script>
+<script>
+function choose_show(x){
+	var choose = document.getElementById("show_"+x);
+	var obj = document.getElementById("svg"+x);
+	//alert(obj);
+	if (! choose.checked)
+	{
+		obj.style.display = "none";
+	}
+	else{
+		obj.style.display = "";
+	}
+	
+}
+function deal_line(x){
+	//alert(x.date);
+	var date_format = d3.time.format("%Y,%m,%d");
+	var cur_date = date_format(x.date);
+	//alert(cur_date);
+	var date = document.getElementById("date");
+	d3.select(date).text("Date: "+cur_date);
+	var open_price = document.getElementById("open_price");
+	d3.select(open_price).text("Open_price: "+x.open_price);
+	var highest_price = document.getElementById("highest_price");
+	d3.select(highest_price).text("Highest_price: "+x.highest_price);
+	var lowest_price = document.getElementById("lowest_price");
+	d3.select(lowest_price).text("Lowest_price: "+x.lowest_price);
+	var close_price = document.getElementById("close_price");
+	d3.select(close_price).text("Close_price: "+x.close_price);
+	var trade_v = document.getElementById("trade_v");
+	//var format0 = d3.format([".2"]);
+	d3.select(trade_v).text("Trading volume: "+x.num+" (hundred million shares)");
+	
+	//time.text = ".......";
+	//$(time).html("欢迎您访问简明现代魔法图书馆～～");
+	//alert(x);
+}
+function choose_line(n){
+	var choose = document.getElementById("choose_"+n);
+	var obj = document.getElementById("line"+n);
+	//alert(obj);
+	if (! choose.checked)
+	{
+		obj.style.visibility = "hidden";
+	}
+	else{
+		obj.style.visibility = "visible";
+	}
+}
+//alert(1)
+
+var margin = {top: 20, right: 50, bottom: 30, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
+//	width2 = 960- margin.left - margin.right,
+//	height2 = 800 - margin.top - margin.bottom,;
+	
+var parseDate = d3.time.format("%Y-%m-%d").parse;
+
+var x = d3.time.scale()
+    .range([0, width]);
+
+var y = d3.scale.linear()
+	.domain([0,30])
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+    //.tickSize(height);
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+	//.tickSize(width);
+
+
+
+var yAxis1 = d3.svg.axis()
+    .scale(y)
+    .orient("right");
+
+
+var line = d3.svg.line()
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.open_price); });
+
+var line2 = d3.svg.line()
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.highest_price); });
+var line3 = d3.svg.line()
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.lowest_price); });
+var line4 = d3.svg.line()
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.close_price); });
+
+var color = d3.scale.category10();
+var svg = d3.select("body").append("svg")
+	.attr("id","svg1")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+//////////////////////////////////////////////////////////////////////////////
+var margin2 = {top: 20, right: 50, bottom: 30, left: 50},
+    width2 = 960 - margin.left - margin.right,
+    height2 = 180 - margin.top - margin.bottom;
+
+var x2 = d3.time.scale()
+    .range([0, width]);
+
+var y2 = d3.scale.linear()
+    .range([height2, 0]);
+
+
+var xAxis2 = d3.svg.axis()
+    .scale(x2)
+    .orient("bottom");
+
+var yAxis2 = d3.svg.axis()
+    .scale(y2)
+    .orient("left");
+    //.ticks(10, "%");
+var yAxis3 = d3.svg.axis()
+    .scale(y2)
+    .orient("right");
+
+var svg2 = d3.select("body").append("svg")
+	.attr("id","svg2")
+    .attr("width", width2 + margin2.left + margin2.right)
+    .attr("height", height2 + margin2.top + margin2.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")")
+  
+
+
+///////////////////////////////////////////////////////////////////////
+	
+
+d3.tsv("data.tsv", function(error, data) {
+	color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
+  data.forEach(function(d) {
+    d.date = parseDate(d.date);
+    d.open_price = +d.open_price;
+	d.lowest_price = +d.lowest_price;
+	d.highest_price = +d.highest_price;
+	d.close_price = +d.close_price;
+
+  });
+
+  x.domain(d3.extent(data, function(d) { return d.date; }));
+  y.domain([d3.min(data, function(d) { return d.lowest_price; }),d3.max(data, function(d) { return d.highest_price; })]);
+
+////////////////////////////////////////////////////////////////////
+  x2.domain(d3.extent(data, function(d) { return d.date; }));
+  y2.domain([d3.min(data, function(d) { return d.num; }),d3.max(data, function(d) { return d.num; })]);
+  //y2.domain(d3.extent(data, function(d) { return d.num; }));
+  svg2.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + (height2) + ")")
+      .call(xAxis2);
+
+  svg2.append("g")
+      .attr("class", "y axis")
+      .call(yAxis2)
+   /* .append("text")
+	  
+      .attr("transform", "rotate(0)")
+	  .attr("transform", "translate("+115+",0)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Trading volume");*/
+  svg2.append("g")
+      .attr("class", "y axis")
+	   .attr("transform", "translate("+width2+",0)")
+      .call(yAxis3)
+    .append("text")
+      .attr("transform", "rotate(0)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Trading volume");
+  
+  svg2.append("g")
+	  .attr("transform", "translate(20,0)")
+	.append("text")
+	  .attr("id","trade_v")
+	  //.attr("id","highest_price")
+	  .text("Trading volume:"+"0"+" (hundred million shares)");
+
+  var bar = svg2.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", function(d) {if(d.num>1){return "bar"} else{return "bbar"} })
+      .attr("x", function(d) { return x2(d.date); })
+      .attr("width", 5)
+      .attr("y", function(d) { return y2(d.num); })
+      .attr("height", function(d) { return height2-y2(d.num); });
+  bar.on("mousemove",function(){
+	  var mouse = d3.mouse(this);
+		//alert(mouse[0]+","+mouse[1]);
+		var mouth = 20;
+		var quarter = 61;
+		var half_month = 119;
+		//data[0].date;
+		var x = parseInt(half_month-mouse[0]*half_month/810);
+		//alert(x);
+		deal_line(data[x]);
+		
+	  });
+/////////////////////////////////////////////////////////////////////
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+	
+  
+
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Price(yuan)");
+
+   svg.append("g")
+      .attr("class", "y axis")
+	  .attr("transform", "translate("+width+",0)")
+      .call(yAxis1)
+    .append("text")
+	
+      .attr("transform", "30+rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Price(yuan)");
+
+
+  svg.append("g")
+	  .attr("transform", "translate("+30+",0)")
+	.append("text")
+	  .attr("id","date")
+	  .text("Date:"+"0");
+
+  svg.append("g")
+	  .attr("transform", "translate("+(175)+",0)")
+	.append("text")
+	  .attr("id","open_price")
+	  .text("Open_price:"+" 0");
+  svg.append("g")
+	  .attr("transform", "translate("+(320)+",0)")
+	.append("text")
+	  .attr("id","highest_price")
+	  .text("Highest_price:"+" 0");
+  svg.append("g")
+	  .attr("transform", "translate("+(490)+",0)")
+	.append("text")
+	  .attr("id","lowest_price")
+	  .text("Lowest_price"+" 0");
+  svg.append("g")
+	  .attr("transform", "translate(660,0)")
+	.append("text")
+	  .attr("id","close_price")
+	  .text("Close_price"+" 0");
+ 
+  var path = svg.append("path")
+      .datum(data)
+	  .attr("id", "line1")
+      .attr("class", "line1")
+      .attr("d", line);
+
+  var path2 = svg.append("path")
+      .datum(data)
+	  .attr("id", "line2")
+      .attr("class", "line2")
+      .attr("d", line2);
+  var path3 = svg.append("path")
+      .datum(data)
+	  .attr("id", "line3")
+      .attr("class", "line3")
+      .attr("d", line3);
+  var path4 = svg.append("path")
+      .datum(data)
+	  .attr("id", "line4")
+      .attr("class", "line4")
+      .attr("d", line4);
+  path.on("mousemove",function(){
+	  var mouse = d3.mouse(this);
+		//alert(mouse[0]+","+mouse[1]);
+		var mouth = 20;
+		var quarter = 61;
+		var half_month = 119;
+		//data[0].date;
+		var x = parseInt(half_month-mouse[0]*half_month/810);
+		//alert(x);
+		deal_line(data[x]);
+		
+	  });
+   path2.on("mousemove",function(){
+	  var mouse = d3.mouse(this);
+		//alert(mouse[0]+","+mouse[1]);
+		var mouth = 20;
+		var quarter = 61;
+		var half_month = 119;
+		//data[0].date;
+		var x = parseInt(half_month-mouse[0]*half_month/810);
+		//alert(x);
+		deal_line(data[x]);
+		
+	  });
+
+  path3.on("mousemove",function(){
+	  var mouse = d3.mouse(this);
+		//alert(mouse[0]+","+mouse[1]);
+		var mouth = 20;
+		var quarter = 61;
+		var half_month = 119;
+		//data[0].date;
+		var x = parseInt(half_month-mouse[0]*half_month/810);
+		//alert(x);
+		deal_line(data[x]);
+		
+	  });
+  path4.on("mousemove",function(){
+	  var mouse = d3.mouse(this);
+		//alert(mouse[0]+","+mouse[1]);
+		var mouth = 20;
+		var quarter = 61;
+		var half_month = 119;
+		//data[0].date;
+		var x = parseInt(half_month-mouse[0]*half_month/810);
+		//alert(x);
+		deal_line(data[x]);
+		
+	  });
+
+   
+ 
+});
+
+
+
+</script>
+<!--
+<div>
+<table style="margin-left:30px" border="1" width = "840">
+<tr>
+<td><input type="button" value="recent month"></input></td>
+<td><input type="button" value="recent quarter"></input></td><td><input type="button" value="recent half-year"></input></td>
+</tr>
+</table>-->
+</div>
