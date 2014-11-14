@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style >
+
+    .node {
+        cursor: pointer;
+    }
+
+    .node:hover {
+        stroke: #fff;
+        stroke-width: 1.5px;
+    }
+
+    .node--leaf {
+        fill: white;
+    }
+
+    .label {
+        font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-anchor: middle;
+        text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+    }
+
+    .label,
+    .node--root,
+    .node--leaf {
+        pointer-events: none;
+    }
+</style>
+<body>
+<p>The GDP of Chinese Cities in 2013</p>
+
+<script type="text/javascript" src="d3.js"></script>
+<script src="city.js"></script>
+</body>
+</html>
