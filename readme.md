@@ -1,6 +1,6 @@
 ﻿﻿﻿﻿﻿The GDP of Chinese cities in 2013
 ============
-###1. GithubAddress：[liuzengchaoqian_xiaozhibin](https://github.com/vis2014/Assignment3/tree/liuzengchaoqian_xiaozhibin).
+###1. GithubAddress：[liuzengchaoqian_xiaozhibin_A3](https://github.com/vis2014/Assignment3/tree/liuzengchaoqian_xiaozhibin_A3).
 
 ###2. The file includes:
 
