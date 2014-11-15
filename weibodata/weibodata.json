@@ -1,0 +1,65 @@
+{
+    "name": "text",
+    "children": [
+
+        {
+            "name": "南方日报讯","size": 0,"value":1,
+            "children": [
+                {"name": "注意","size": 584,"value":1},
+                {"name": "可怕","size": 362,"value":1},
+                {"name": "禽流感","size": 174,"value":1},
+                {"name": "安全","size": 132,"value":1},
+                {"name": "鸡肉","size": 56,"value":1}
+            ]
+        },
+
+        {
+            "name": "深圳活禽市场","size": 0,"value":2,
+            "children": [
+                {"name": "禽流感","size": 421,"value":2},
+                {"name": "小心","size": 299,"value":2},
+                {"name": "深圳","size": 145,"value":2},
+                {"name": "吃","size": 144,"value":2},
+                {"name": "恐怖","size": 124,"value":2}
+            ]
+        },
+
+        {
+            "name": "保定内地首例","size": 0,"value":3,
+            "children": [
+                {"name": "禽流感","size": 325,"value":3},
+                {"name": "保定","size": 124,"value":3},
+                {"name": "恐怖","size": 83,"value":3},
+                {"name": "传染","size": 76,"value":3},
+                {"name": "医院","size": 65,"value":3}
+            ]
+        },
+
+        {
+            "name": "聚焦H7N9","size": 0,"value":4,
+            "children": [
+                {"name": "注意","size": 139,"value":4},
+                {"name": "卫生","size": 85,"value":4},
+                {"name": "鸡肉","size": 32,"value":4},
+                {"name": "感冒","size": 15,"value":4},
+                {"name": "病毒","size": 9,"value":4}
+            ]
+        },
+
+
+
+        {
+            "name": "广东新增","size":0,"value":5,
+            "children": [
+                {"name": "注意","size": 71,"value":5},
+                {"name": "板蓝根","size": 34,"value":5},
+                {"name": "可怕","size": 21,"value":5},
+                {"name": "广东","size": 18,"value":5},
+                {"name": "小心","size": 18,"value":5}
+            ]
+        }
+
+
+
+    ]
+}
