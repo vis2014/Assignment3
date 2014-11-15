@@ -1,0 +1,120 @@
+#chart {
+    margin-left: -40px;
+    height: 506px;
+}
+
+text {
+    font: 10px sans-serif;
+}
+
+.dot {
+    stroke: #000;
+}
+
+.legend {
+    stroke: #000;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.label {
+    fill: #777;
+}
+
+.year.label {
+    font: 500 196px "Helvetica Neue";
+    fill: #ddd;
+}
+
+.year.label.active {
+    fill: #aaa;
+}
+
+.overlay {
+    fill: none;
+    pointer-events: all;
+    cursor: ew-resize;
+}
+
+
+
+.hide{
+    visibility: hidden;
+}
+
+.fade{
+    opacity:.2;
+}
+
+#someId{
+    position:fixed;
+    top: 145px;
+    left: 450px;
+    font-size: .2em;
+    color: black;
+    opacity: .8;
+    width: auto;
+}
+#anotherId0{
+    position:absolute;
+    top: 140px;
+    left: 450px;
+    font-size: .2em;
+    color: black;
+    opacity: .8;
+    width: 150px;
+
+}
+#anotherId1{
+    position:absolute;
+    top: 170px;
+    left: 450px;
+    font-size: .2em;
+    color: black;
+    opacity: .8;
+    width: 150px;
+}
+#anotherId2{
+    position:absolute;
+    top: 200px;
+    left: 450px;
+    font-size: .2em;
+    color: black;
+    opacity: .8;
+    width: 150px;
+}
+#anotherId3{
+    position:absolute;
+    top: 230px;
+    left: 450px;
+    font-size: .2em;
+    color: black;
+    opacity: .8;
+    width: 150px;
+}
+#anotherId4{
+    position:absolute;
+    top: 260px;
+    left: 450px;
+    font-size: .2em;
+    color: black;
+    opacity: .8;
+    width: 150px;
+}
+#anotherId5{
+    position:absolute;
+    top: 290px;
+    left: 450px;
+    font-size: .2em;
+    color: black;
+    opacity: .8;
+    width: 150px;
+}
+
+
+
+
