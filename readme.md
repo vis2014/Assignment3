@@ -1,24 +1,16 @@
-@@ -0,0 +1,23 @@
-#ÏÂÃæ½éÉÜgithubµÄÊ¹ÓÃ·½·¨£º
-###1. githubµØÖ·£º[Assignment3](https://github.com/vis2014/Assignment3).
+#ä¸»é¢˜è¯äº‘å±•ç¤º
+###1. githubåœ°å€ï¼š[Assignment3](https://github.com/vis2014/Assignment3/tree/GuoTianyou_CenWubin_A3).
 
-###2. °²×°git£º
-+ git¹¤¾ßÓÃÀ´»ñÈ¡Ô¶³Ì´úÂëÒÔ¼°Ìá½»´úÂë¡£
-+ ÏÂÔØµØÖ·£º [git](http://git-scm.com/downloads) ¡£
+###2. æ•°æ®æ¥æºè¯´æ˜
++ ä¸»é¢˜æ¨¡å‹æ˜¯ç”¨äºæŒ–æ˜æ–‡æœ¬æ½œåœ¨è¯­ä¹‰çš„ä¸€ç§ç»Ÿè®¡æ¨¡å‹ã€‚éœ€è¦æŒ‡æ˜çš„æ˜¯ï¼Œè¿™è¾¹çš„ä¸»é¢˜å¹¶éé€šå¸¸æ„ä¹‰ä¸Šçš„ä¸»é¢˜ï¼Œè€Œæ˜¯ç»Ÿè®¡æ„ä¹‰ä¸Šé¢çš„ä¸»é¢˜ã€‚
++ æœ¬é¡¹ç›®çš„æ•°æ®æ¥æºäºä½¿ç”¨PLSAå¯¹LDC2007T38è¿›è¡Œè®­ç»ƒè¾“å‡ºçš„ç»“æœã€‚åœ¨å¯¹è¾“å‡ºç»“æœè¿›è¡Œä¸€äº›æ ¼å¼è½¬æ¢ä¹‹åï¼Œæˆ‘ä»¬å¾—åˆ°äº†é¡¹ç›®æ‰€éœ€çš„JSONæ ¼å¼åŒ…ã€‚
++ JSONæ ¼å¼åŒ…ä¸­æ•°æ®åŒ…å«è‹¥å¹²ä¸ªä¸»é¢˜ï¼Œä»¥åŠè¿™äº›ä¸»é¢˜ä¸‹çš„è‹¥å¹²ä¸ªä¸»é¢˜è¯ï¼ˆè¡¨ç¤ºåœ¨æŸä¸ªä¸»é¢˜ä¸‹è¾ƒé«˜æ¦‚ç‡å‡ºç°çš„è¯ï¼‰ã€‚
 
-###3. »ñÈ¡githubÉÏµÄ´úÂë£º
-+ ÔÚÒ»¸öµ¥¶ÀµÄÎÄ¼ş¼ĞÖĞ£¬ÀıÈçE:\git£¬°´×¡shiftÍ¬Ê±ÓÒ¼ü£¬Ñ¡ÔñÔÚ´Ë´¦´ò¿ªÃüÁî´°¿Ú¡£ÒÀ´ÎÊäÈëÒÔÏÂÃüÁî
-+ git clone https://github.com/vis2014/Assignment3.git		//¿ËÂ¡´úÂë,usernameÊÇvis2014@163.com, passwordÊÇvis_2014
-+ cd Assignment3		//½øÈëÎÄ¼ş¼ĞAssignment3
-+ git checkout ¨Cb *local_name* origin/master	//´´½¨×Ô¼ºµÄ·ÖÖ§£¬*×¢Òâ*£ºlocal_nameÌæ»»Îª×Ô¼ºµÄÃû×Ö£¬¸ñÊ½ÎªLastnameFirstname_LastnameFirstname_A3 
-
-###4. ÔÚAssignment3ÎÄ¼ş¼ĞÖĞ·ÅÈë×Ô¼ºµÄÍêÕûµÄ´úÂë£¬°üÀ¨ÒıÓÃµÄjavascript¿âµÈ
-
-###5. ĞŞ¸Äreadme.mdÎÄ¼ş£¬ÔÚ¸ÃÎÄ¼şÀïĞ´×÷ÒµµÄ½éÉÜ£¬±àĞ´¸ÃÎÄ¼şÊ¹ÓÃµÄÊÇmarkdownÓï·¨£¬¿ÉÒÔÉÏÍøÉÏ²éÓï·¨¸ñÊ½£¬Ò²¿ÉÒÔ²Î¿¼ÕâÆªÎÄÕÂ[markdownÓï·¨ËµÃ÷](http://wowubuntu.com/markdown/basic.html)
-
-###6. ÔÚÒÔÉÏ²½ÖèÍê³ÉÖ®ºó¿ÉÒÔÉÏ´«´úÂë£¬°´×¡shiftÍ¬Ê±ÓÒ¼ü£¬Ñ¡ÔñÔÚ´Ë´¦´ò¿ªÃüÁî´°¿Ú¡£ÒÀ´ÎÊäÈëÒÔÏÂÃüÁî
-+ git add . 	//Ìí¼ÓÎÄ¼ş
-+ git commit -m "×¢ÊÍ" //Ìá½»µ½±¾µØ
-+ git push origin *local_name*	//*×¢Òâ*£ººÍµÚÈı²½Ò»Ñù£¬local_nameÌæ»»Îª×Ô¼ºµÄÃû×Ö£¬¸ñÊ½ÎªLastnameFirstname_LastnameFirstname_A3£¬ÒªºÍÉÏÃæµÄlocal_name±£³ÖÒ»ÖÂ,usernameÊÇvis2014@163.com, passwordÊÇvis_2014
-
-###7. ÕâÊ±ÔÙ´Î²é¿´githubµÄ´úÂë£¬[Assignment3](https://github.com/vis2014/Assignment3)£¬ÔÚ×Ô¼ºµÄ·ÖÖ§Àï¾Í¿ÉÒÔ¿´µ½×Ô¼ºµÄ´úÂëÁË
+###3. é¡¹ç›®è¯´æ˜
++ æœ¬é¡¹ç›®ä½¿ç”¨WordCloudå¸ƒå±€å±•ç¤ºäº†ä¸»é¢˜ä¸ä¸»é¢˜è¯ä¹‹é—´çš„å…³ç³»åˆ†ç±»ã€‚
++ app/data é¡¹ç›®æ‰€ç”¨çš„æ•°æ®
++ app/simple.html é¡¹ç›®ä¸»é¡µé¢
++ js/.* é¡¹ç›®æ‰€ç”¨jsæ–‡ä»¶
++ css/style.css çº§è”æ ·å¼
+###Download address
++ http://snap.stanford.edu/data/email-EuAll.html

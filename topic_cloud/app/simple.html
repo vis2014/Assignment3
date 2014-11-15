@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<script src="../js/d3.js"></script>
+<script src="../js/d3.min.js"></script>
+<script src="../js/d3.layout.cloud.js"></script>
+<div id="container">
+
+<div id="header">
+  <h1>Topics --> click any word to see the Topic words</h1>
+</div>
+<div id="menu">
+  <h2>Menu</h2>
+  <p>
+    <label>Spiral:</label>
+    <label for="archimedean"><input type="radio" name="spiral" id="archimedean" value="archimedean" checked="checked"> Archimedean</label>
+    <label for="rectangular"><input type="radio" name="spiral" id="rectangular" value="rectangular"> Rectangular</label>
+  </p>
+  <p>
+    <label for="scale">Scale:</label>
+    <label for="scale-log"><input type="radio" name="scale" id="scale-log" value="log" checked="checked" onclick="Scale(1)"> log n</label>
+    <label for="scale-sqrt"><input type="radio" name="scale" id="scale-sqrt" value="sqrt" onclick="Scale(2)"> √n</label>
+    <label for="scale-linear"><input type="radio" name="scale" id="scale-linear" value="linear" onclick="Scale(3)"> n</label>
+  </p>
+  <p>
+    <label for="font">Font:</label> <input type="text" id="font" value="宋体" onchange="Font(value)">
+  </p>
+</div>
+<div id="content">
+  <script src="../js/cloud.js"></script>
+</div>
+ <div id="footer">By Guotianyou and Cenwubin</div>
+</div>
+
+</body>
