@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿The GDP of Chinese cities in 2013
+﻿﻿﻿﻿﻿﻿﻿﻿The GDP of Chinese cities in 2013
 ============
 ###1. GithubAddress：[liuzengchaoqian_xiaozhibin_A3](https://github.com/vis2014/Assignment3/tree/liuzengchaoqian_xiaozhibin_A3).
 
@@ -18,3 +18,5 @@
 ###4. Data
 + Data type: JSON.
 + [Data address](http://bbs.hupu.com/8504286.html): The data is transformed  to "city.json".
+
+###5. Assignment2/Assignment3=0.7/0.3
