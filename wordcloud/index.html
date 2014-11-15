@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="jquery.min.js"></script>
+	<script src="d3.min.js"></script>
+	<script src="d3.js"></script>
+	<script src="d3.layout.cloud.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+  var fill = d3.scale.category20();
+  d3.layout.cloud().size([800, 800])
+      .words([
+        "no zuo no die", "萌萌哒", "茶叶蛋", "啤酒和炸鸡", "来自星星的你", "细思恐极", "绝壁","啊痛悟蜡","人鱼线","图样图森破","醒工砖","么么哒","思密达","You Can You Up","喜大普奔","十动然拒","人艰不拆","绿茶婊","32个赞","火钳刘明","不明觉厉","好人一生平安","喵了个咪","图森破","求高分",
+        "弱爆了","感脚","纳尼","233","挽尊","肿么","你妹","节操","→_→","Bazinga","赛高","高端黑","哔——","苦逼","待你长发及腰","碉堡","为毛","二逼","内牛满面","萝莉","呆呆呆呆","屌丝","赞"
+        ].map(function(d) {
+        return {"text": d, "size": 10 + Math.random() * 60};
+      }))
+      .rotate(function() { return ~~(Math.random() * 3) * 45; })
+      .font("Microsoft YaHei")
+      .fontSize(function(d) { return d.size; })
+      .on("end", draw)
+      .start();
+  function draw(words) 
+  {
+    d3.select("body").append("svg")
+        .attr("width", 1000)
+        .attr("height", 1000)
+      .append("g")
+        .attr("transform", "translate(150,150)")
+      .selectAll("text")
+        .data(words)
+      .enter().append("text")
+        .style("border","1px solid blue")
+        .style("font-size", function(d) { return d.size + "px"; })
+        .style("font-family", "Microsoft YaHei")
+        .style("fill", function(d, i) { return fill(i); })
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) {
+          return "translate(" + [d.x+450, d.y+250] + ")rotate(" + d.rotate + ")";
+        })
+        .text(function(d) { return d.text; });
+
+    d3.selectAll("text")
+        .on("mousedown", function(d,i){
+            d3.select(this)
+            .style("font-size",function(d) { return d.size*2 + "px"; });
+        })
+         .on("mouseup", function(d,i){
+            d3.select(this)
+            .style("font-size",function(d) { return d.size + "px"; });
+        })
+         .on("mouseover", function(d,i){
+            d3.select(this)
+            .style("fill","#330066")
+        })
+         .on("mouseout", function(d,i){
+            d3.select(this)
+            .style("fill", fill(i))
+        })
+
+         .on("dblclick", function(d,i){
+            d3.select(this)
+             .attr("transform", function(d) {
+          return "translate(" + [Math.random()*400, Math.random()*400] + ")rotate(" + Math.random()*100 + ")";
+        })
+        });
+  }
+
+  
+</script>
+</body>
+</html>
