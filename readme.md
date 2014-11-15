@@ -6,9 +6,6 @@
 + 本项目的数据来源于使用PLSA对LDC2007T38进行训练输出的结果。在对输出结果进行一些格式转换之后，我们得到了项目所需的JSON格式包。
 + JSON格式包中数据包含若干个主题，以及这些主题下的若干个主题词（表示在某个主题下较高概率出现的词）。
 
-###3. Download address
-+ http://snap.stanford.edu/data/email-EuAll.html
-
 ###4. 项目说明
 + 本项目使用WordCloud布局展示了主题与主题词之间的关系分类。
 + topic_cloud/app/data 项目所用的数据
