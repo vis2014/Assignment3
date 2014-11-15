@@ -1,16 +1,15 @@
-#主题词云展示
-###1. github地址：[Assignment3](https://github.com/vis2014/Assignment3/tree/GuoTianyou_CenWubin_A3).
+﻿#Data#
 
-###2. 数据来源说明
-+ 主题模型是用于挖掘文本潜在语义的一种统计模型。需要指明的是，这边的主题并非通常意义上的主题，而是统计意义上面的主题。
-+ 本项目的数据来源于使用PLSA对LDC2007T38进行训练输出的结果。在对输出结果进行一些格式转换之后，我们得到了项目所需的JSON格式包。
-+ JSON格式包中数据包含若干个主题，以及这些主题下的若干个主题词（表示在某个主题下较高概率出现的词）。
+ we searched the data from National Data and transformed it to CSV.
 
-###3. 项目说明
-+ 本项目使用WordCloud布局展示了主题与主题词之间的关系分类。
-+ app/data 项目所用的数据
-+ app/simple.html 项目主页面
-+ js/.* 项目所用js文件
-+ css/style.css 级联样式
-###Download address
-+ http://snap.stanford.edu/data/email-EuAll.html
+#Description of our work#
+
+We visualized the age distribution of China in the past ten years, we found that the number of 0 to 14 years old people reduced by one million year by year and the old people who were over 65 increased by 3 to 4 million  at the same time.So we can see from the bar chart the the rate of this two RECs is on the decrease.
+
+#Gain# 
+ 
+After the two homework we all learn much knowledge about D3 and visualization.And we get along well with each other.What's more we know a little about web development,I think this is great experince for us. Maybe the two assignments are not good but we leran the basis about D3 and javascript and we may make it good at final projection.
+
+#ratio#
+
+The assignment3 accounted for 0.4.
