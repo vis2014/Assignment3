@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="League of Legends Champions Statistics">
+    <meta name="author" content="Song Shuangyang, Tang Hongyin">
+    <link rel="icon" href="">
+    <title>League of Legends Champions Statistics</title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/core.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">League of Legends Champions Statistics</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row clearfix">
+        <div class="col-sm-12"><br>
+			<div class="rectDiv" data-toggle="modal" data-target="#Mage">
+				<span class="rect Mage"></span>
+				<span>Mage</span>
+			</div>
+			<div class="rectDiv" data-toggle="modal" data-target="#Marksman">
+				<span class="rect Marksman"></span>
+				<span>Marksman</span>
+			</div>
+			<div class="rectDiv" data-toggle="modal" data-target="#Assassin">
+				<span class="rect Assassin"></span>
+				<span>Assassin</span>
+			</div>
+			<div class="rectDiv" data-toggle="modal" data-target="#Support">
+				<span class="rect Support"></span>
+				<span>Support</span>
+			</div>
+			<div class="rectDiv" data-toggle="modal" data-target="#Tank">
+				<span class="rect Tank"></span>
+				<span>Tank</span>
+			</div>
+			<div class="rectDiv" data-toggle="modal" data-target="#Fighter">
+				<span class="rect Fighter"></span>
+				<span>Fighter</span>
+			</div>
+        </div>
+      </div>
+	 
+	  <div class="row">
+        <div class="col-sm-12 ">
+			<div id="div-chart"></div>
+		</div>
+      </div>
+	  
+    </div>
+	
+	<!--Mage Modal -->
+	<div class="modal fade" id="Mage" tabindex="-1" role="dialog" aria-labelledby="MageLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="myModalLabel">Mage (Choose the Legends you want to draw)</h4>
+		  </div>
+		  <div class="modal-body clearfix">
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary btnDraw">Draw</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!--Marksman Modal -->
+	<div class="modal fade" id="Marksman" tabindex="-1" role="dialog" aria-labelledby="MageLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="myModalLabel">Marksman (Choose the Legends you want to draw)</h4>
+		  </div>
+		  <div class="modal-body clearfix">
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary btnDraw">Draw</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!--Assassin Modal -->
+	<div class="modal fade" id="Assassin" tabindex="-1" role="dialog" aria-labelledby="MageLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="myModalLabel">Assassin (Choose the Legends you want to draw)</h4>
+		  </div>
+		  <div class="modal-body clearfix">
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary btnDraw">Draw</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!--Support Modal -->
+	<div class="modal fade" id="Support" tabindex="-1" role="dialog" aria-labelledby="MageLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="myModalLabel">Support (Choose the Legends you want to draw)</h4>
+		  </div>
+		  <div class="modal-body clearfix">
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary btnDraw">Draw</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!--Tank Modal -->
+	<div class="modal fade" id="Tank" tabindex="-1" role="dialog" aria-labelledby="MageLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="myModalLabel">Tank (Choose the Legends you want to draw)</h4>
+		  </div>
+		  <div class="modal-body clearfix">
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary btnDraw">Draw</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!--Fighter Modal -->
+	<div class="modal fade" id="Fighter" tabindex="-1" role="dialog" aria-labelledby="MageLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="myModalLabel">Fighter (Choose the Legends you want to draw)</h4>
+		  </div>
+		  <div class="modal-body clearfix">
+		  </div>
+		  <div class="modal-footer">
+			<!--label class=" selectall"  data="0">
+				<input type="checkbox"> Select All
+			</label-->
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary btnDraw">Draw</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../src/jquery-2.0.0.min.js" type="text/javascript"></script>
+    <script src="./js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../src/d3.min.js" type="text/javascript"></script>
+	<script src="./js/core.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		update(datafile);
+	</script>
+  </body>
+</html>
