@@ -80,13 +80,13 @@ d3.csv("data/data_area_statistics.csv", function (error, data) {
                 .on("mouseover",function(d,i){
                     d3.select(this)
                         .attr("fill","#00E1FB");
-                    document.getElementById("province").innerHTML=root.features[i].properties.name;
+                    
 
                 })
                 .on("mouseout",function(d){
                     d3.select(this)
                         .attr("fill",color(d.properties.value));
-                    document.getElementById("province").innerHTML="";
+
 
                 })
                 .on("click",function(d,i){
