@@ -1,0 +1,37 @@
+body{
+    background: #373737;
+}
+
+#china_map{
+    float: left;
+}
+
+#sex_donut{
+    float: left;
+}
+
+#label{
+    float: left;
+}
+
+#wordle{
+
+    float: left;
+}
+#wordlebutton{
+    float: left;
+    margin-left: 100px;
+}
+#province{
+    float: left;
+    color: white;
+    font-size: 40px;
+
+}
+#province{
+    text-align: center;
+    line-height: 300px;
+    height: 300px;
+    width: 150px;
+
+}
