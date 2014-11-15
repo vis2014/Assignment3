@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta http-equiv="Content-Language" content="zh-CN" />
+	<style type="text/css">
+		.title{
+			text-align: center;
+			position: absolute;
+			width: 800px;
+			height: 200px;
+			left: 50%;
+			top: 5%;
+			margin-left: -400px;
+			margin-top: 0px;
+		}
+		.chart1{
+			position: absolute;
+			left: 1%;
+			top: 50%;
+			margin-left: 0px;
+			margin-top: -150px;
+		}
+		.chart2{
+			position: absolute;
+			left: 51%;
+			top: 50%;
+			margin-left: 0px;
+			margin-top: -150px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="title">
+		<hr />
+		<h1 style="center">
+			Assignment III: Multivariate Data Visualization
+		</h1>
+		<h3>
+			By ZhouNan AND HouJianpeng, UCAS
+		</h3>
+		<hr />
+	</div>
+	<br />
+	<div class="chart2">
+		<div id="chartContainer1">
+  			<script src="./lib/d3.v3.4.8.js"></script>
+  			<script src="./lib/dimple.v2.1.1.js"></script>
+  			<script type="text/javascript">
+    			var svg1 = dimple.newSvg("#chartContainer1", 590, 400);
+    			d3.tsv("./data/example_data.tsv", function (data) {
+    
+      			// Create and position the chart
+      			var myChart1 = new dimple.chart(svg1, data);
+      			myChart1.setBounds(65, 50, 505, 310)
+
+      			// Add a Grouped Mekko Axis.  This will show Brands grouped by owners
+      			// sized by unit sales.
+      			var x1 = myChart1.addAxis("x", ["Owner", "Brand"], "Unit Sales");
+      			x1.showPercent = true;
+
+      			// Add the vertical measure to also show unit sales, which is standard
+      			// for a mekko, but not a requirement in dimple.
+      			myChart1.addPctAxis("y", "Unit Sales");
+
+     			 // Color by Unit Sales.  By defining this without specifying the color
+     			 // range in the second parameter, dimple will assign colors as usual
+      			// and adjust saturation based on the Unit Sales value.
+     			 var c1 = myChart1.addColorAxis("Unit Sales");
+
+      			// Override the minimum axis value to a lower number.  By default the
+      			// range of values is used with the minimum being 0 saturation and the
+      			// maximum being 100% this causes the bars to be too washed out in this
+      			// particular case.
+      			c1.overrideMin = -10000;
+
+      			// Draw SKU's for the series, by specifying owner second here, it
+      			// ensures dimple will color by owner rather than SKU.  This suits the
+      			// grouping to give blocks of color for each owner faded by the SKU
+      			// unit sales value.
+      			myChart1.addSeries(["SKU", "Owner"], dimple.plot.bar);
+    
+      			// Add a legend
+      			myChart1.addLegend(240, 10, 330, 20, "right");
+
+      			// Animate the chart by date values
+      			myChart1.setStoryboard("Date");
+
+      			// Draw the chart
+      			myChart1.draw();
+    			});
+  			</script>
+		</div>
+	</div>
+	<div class="chart1">
+		<div id="chartContainer2">
+  			<script src="./lib/d3.v3.4.8.js"></script>
+  			<script src="./lib/dimple.v2.1.1.js"></script>
+  			<script type="text/javascript">
+    			var svg2 = dimple.newSvg("#chartContainer2", 590, 400);
+    			d3.tsv("./data/example_data.tsv", function (data) {
+      			var myChart2 = new dimple.chart(svg2, data);
+      			myChart2.setBounds(60, 30, 495, 330);
+        
+      			// Define all the axes
+      			var xAxis2 = myChart2.addMeasureAxis("x", "Distribution");
+      			var yAxis2 = myChart2.addMeasureAxis("y", "Price");
+      			var segments2 = myChart2.addMeasureAxis("p", "Unit Sales");
+      			var size2 = myChart2.addMeasureAxis("z", "Sales Value");
+      			var ring2 = myChart2.addSeries(["Price Tier", "Channel"], dimple.plot.pie);
+      			var pie2 = myChart2.addSeries(["Price Tier", "Owner"], dimple.plot.pie);
+
+      			// Zoom in the axis bounds
+      			xAxis2.overrideMin = 40;
+      			xAxis2.overrideMax = 70;
+      			yAxis2.overrideMax = 150;
+			
+      			// Set the maximum radius for the bubbles
+      			ring2.radius = 75;
+      			pie2.radius = 75;
+
+      			// Create fixed 10px ring with a 5px
+      			// margin (negative sizes are calculated inwards)
+      			ring2.innerRadius = "-10px";
+      			pie2.outerRadius = "-15px";
+
+      			// Draw averages for the pie and ring
+      			ring2.aggregate = dimple.aggregateMethod.avg;
+      			pie2.aggregate = dimple.aggregateMethod.avg;
+
+      			// Animate by date
+      			myChart2.setStoryboard("Date");
+
+     			myChart2.draw();
+    			});
+  			</script>
+		</div>
+	</div>
+</body>
+</html>
