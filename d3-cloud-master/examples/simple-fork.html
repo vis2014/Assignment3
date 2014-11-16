@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+<link type="text/css" rel="stylesheet" href="word.css"/>
+
+<script src="../lib/d3/d3.js"></script>
+<script src="../lib/jquery.min.js"></script>
+<script src="../d3.layout.cloud.js"></script>
+<script>
+var words = ["lion","crow","cat","mouse","peacock","frog","elephant","peacock","frog","elephant","monkey","snake","chicken","dragonfly","mantis","pug-dog","chicken","dragonfly","mantis","pug-dog","large meatball","leopard","turtledove","elephant","monkey","snake","chicken","dragonfly","mantis"];
+
+var width=1000;
+var height=800;
+var minWidth = 200;
+var minHeight = 200;
+function show(data,width,height)
+{
+  var fill = d3.scale.category20();
+  d3.layout.cloud().size([width, height])
+      .words(data.map(function(d) {
+        return {text: d, size: 10 + Math.random() * 90};
+      }))
+      .padding(5)
+      .rotate(function() { return ~~(Math.random() * 2) * 90; })
+      .font("Impact")
+      .fontSize(function(d) { return d.size; })
+      .on("end", draw)
+      .start();
+
+  function draw(words) {
+    //d3.select("body").remove();
+	d3.select("svg").remove();
+    d3.select("#cloud_word_show").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+      .append("g")
+        .attr("transform", "translate(180,180)")
+      .selectAll("text")
+        .data(words)
+      .enter().append("text")
+        .style("font-size", function(d) { return d.size + "px"; })
+        .style("font-family", "Impact")
+        .style("fill", function(d, i) { return fill(i); })
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) {
+          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+        })
+        .text(function(d) { return d.text; })
+	}
+  }
+  
+
+function getsize(){
+	width = $("#minWidth").val(); 
+	height = $("#minHeight").val();
+	if(width < minHeight || height < minHeight)
+	{
+		alert("您输入的宽或者高过小，不能小于"+minHeight+"px");
+		return;
+	}
+	show(words,width,height);
+}
+function reset()
+{
+    document.location.reload();
+	/*$("#minWidth").val(width); 
+	$("#minHeight").val(height);
+	show(words,width,height);*/
+}
+window.onload=function(){
+      //do something
+	  show(words,width,height);
+	  $("body").delegate("text","click",function(){
+		var newData = new Array();
+		newData[0] = $(this).html();
+		console.log(newData[0]);
+		if(newData[0] == "")
+		{
+			return;
+		}
+		show(newData,width,height);
+	  });
+}
+
+</script>
+<div id="title">
+<h1>Word Cloud</h1>
+</div>
+<div id="subTitle">
+<h3>--Press certain word to interact</h3>
+</div>
+<div class="controlList">
+改变宽度:
+<textarea id="minWidth" cols="10" rows="1"></textarea>
+改变高度:
+<textarea id="minHeight" cols="10" rows="1"></textarea>
+
+<input type="button" id="read" value="读取" onclick="getsize()">
+<input type="button" id="run" value="重置" onclick="reset()">
+</div>
+<div id="cloud_word_show" style="margin-top:30px;float:right;">
+</div>
+</body>
+</html>

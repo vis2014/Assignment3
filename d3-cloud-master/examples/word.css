@@ -1,0 +1,11 @@
+.controlList{
+    text-align: right;
+    width: 400px;
+    float: right;
+     }
+text:hover{
+		opacity:.7 !important;
+	}
+h1,h3{
+	text-align: center;
+}
