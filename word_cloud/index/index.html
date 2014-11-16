@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+  </head>
+  <body bgcolor="#99CC99">
+    
+    <div class="page-header" id="top">
+      <h1>Word Cloud of Comparion</h1>
+    </div>
+    <div class="row-fluid" align="center">
+      <div class="span12" id="viz">
+      </div>
+    </div>
+    <form id="cloud_options">
+      <fieldset id="canvas_settings">
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+           <!-- <li class="active"><a href="#canvastab" data-toggle="tab">Canvas size</a></li>-->
+            <li><a href="#wordtab" data-toggle="tab" style="font-family:Arial, Helvetica, sans-serif; font-size:20px">字体大小</a></li>
+           <!-- <li><a href="#colortab" data-toggle="tab">Colors</a></li>-->
+            <li><a href="#rotationtab" data-toggle="tab" style="font-family:Arial, Helvetica, sans-serif; font-size:20px">字体旋转</a></li>
+          </ul>
+          <div class="tab-content row-fluid">
+            <!--<div class="tab-pane active" id="canvastab">
+              <div class="span4">
+                <input type="range" name="canvassize" min="250" max="1000" value="500" />    
+              </div> 
+              <div class="span8">
+                <small>This is where you set the size of the canvas to draw words on.</small>
+              </div>
+            </div>-->
+            <div class="tab-pane" id="wordtab">
+              <div class="span4">
+                <input type="range" name="fontsize" min="20" max="100" value="50" />
+              </div>
+              <div class="span8">
+                <small style="font-family:Arial, Helvetica, sans-serif; font-size:20px">设置字云中文字字体大小</small>
+              </div>
+            </div>
+            <!--<div class="tab-pane" id="colortab">
+              <div class="span4">
+                <select name="colors">
+                  <option value="redblue">Red and blue</option>
+                </select>
+              </div>
+              <div class="span8">
+                <small>Set the color of the palette to use. The palette is made up of two &quot;extreme&quot; colors and a background color.</small>
+              </div>
+            </div>-->
+            <div class="tab-pane" id="rotationtab">
+              <div class="span4">
+                <select name="rotation">
+                  <option value="1">全水平排列</option>
+                  <option value=".75">75%水平排列</option>
+                  <option value=".5">半水平排列半垂直排列</option>
+                  <option value=".25">75%垂直排列</option>
+                  <option value="0">全垂直排列</option>
+                </select>
+              </div>
+              <div class="span8">
+                <small style="font-family:Arial, Helvetica, sans-serif; font-size:20px">设置字云中文字的排列分布————水平和垂直</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset id="input_area">
+        <div class="row-fluid">
+          <div class="span6">
+            <textarea id="text1" class="span12" placeholder="请输入待比较第一段文本..." rows="10"></textarea>
+          </div>
+          <div class="span6">
+            <textarea id="text2" class="span12" placeholder="请输入带比较第二段文本..." rows="10"></textarea>
+          </div>
+        </div>
+      </fieldset>
+      <div class="row-fluid" align="center">
+        <div class="span12" align="center" style="font-family:Arial, Helvetica, sans-serif; font-size:20px">
+          <button type="submit">生成字云</button>
+        </div>
+      </div>
+    </form>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="../lib/d3/d3.v2.js"></script>
+    <script src="../d3.layout.compcloud.js"></script>
+    <script src="js/cloud.js"></script>
+  </body>
+</html>
