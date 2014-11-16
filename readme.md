@@ -1,24 +1,24 @@
 @@ -0,0 +1,23 @@
-#ÏÂÃæ½éÉÜgithubµÄÊ¹ÓÃ·½·¨£º
-###1. githubµØÖ·£º[Assignment3](https://github.com/vis2014/Assignment3).
+#ä¸‹é¢ä»‹ç»githubçš„ä½¿ç”¨æ–¹æ³•ï¼š
+###1. githubåœ°å€ï¼š[Assignment3](https://github.com/vis2014/Assignment3).
 
-###2. °²×°git£º
-+ git¹¤¾ßÓÃÀ´»ñÈ¡Ô¶³Ì´úÂëÒÔ¼°Ìá½»´úÂë¡£
-+ ÏÂÔØµØÖ·£º [git](http://git-scm.com/downloads) ¡£
+###2. å®‰è£…gitï¼š
++ gitå·¥å…·ç”¨æ¥è·å–è¿œç¨‹ä»£ç ä»¥åŠæäº¤ä»£ç ã€‚
++ ä¸‹è½½åœ°å€ï¼š [git](http://git-scm.com/downloads) ã€‚
 
-###3. »ñÈ¡githubÉÏµÄ´úÂë£º
-+ ÔÚÒ»¸öµ¥¶ÀµÄÎÄ¼ş¼ĞÖĞ£¬ÀıÈçE:\git£¬°´×¡shiftÍ¬Ê±ÓÒ¼ü£¬Ñ¡ÔñÔÚ´Ë´¦´ò¿ªÃüÁî´°¿Ú¡£ÒÀ´ÎÊäÈëÒÔÏÂÃüÁî
-+ git clone https://github.com/vis2014/Assignment3.git		//¿ËÂ¡´úÂë,usernameÊÇvis2014@163.com, passwordÊÇvis_2014
-+ cd Assignment3		//½øÈëÎÄ¼ş¼ĞAssignment3
-+ git checkout ¨Cb *local_name* origin/master	//´´½¨×Ô¼ºµÄ·ÖÖ§£¬*×¢Òâ*£ºlocal_nameÌæ»»Îª×Ô¼ºµÄÃû×Ö£¬¸ñÊ½ÎªLastnameFirstname_LastnameFirstname_A3 
+###3. è·å–githubä¸Šçš„ä»£ç ï¼š
++ åœ¨ä¸€ä¸ªå•ç‹¬çš„æ–‡ä»¶å¤¹ä¸­ï¼Œä¾‹å¦‚E:\gitï¼ŒæŒ‰ä½shiftåŒæ—¶å³é”®ï¼Œé€‰æ‹©åœ¨æ­¤å¤„æ‰“å¼€å‘½ä»¤çª—å£ã€‚ä¾æ¬¡è¾“å…¥ä»¥ä¸‹å‘½ä»¤
++ git clone https://github.com/vis2014/Assignment3.git		//å…‹éš†ä»£ç ,usernameæ˜¯vis2014@163.com, passwordæ˜¯vis_2014
++ cd Assignment3		//è¿›å…¥æ–‡ä»¶å¤¹Assignment3
++ git checkout -b *local_name* origin/master	//åˆ›å»ºè‡ªå·±çš„åˆ†æ”¯ï¼Œ*æ³¨æ„*ï¼šlocal_nameæ›¿æ¢ä¸ºè‡ªå·±çš„åå­—ï¼Œæ ¼å¼ä¸ºLastnameFirstname_LastnameFirstname_A3 
 
-###4. ÔÚAssignment3ÎÄ¼ş¼ĞÖĞ·ÅÈë×Ô¼ºµÄÍêÕûµÄ´úÂë£¬°üÀ¨ÒıÓÃµÄjavascript¿âµÈ
+###4. åœ¨Assignment3æ–‡ä»¶å¤¹ä¸­æ”¾å…¥è‡ªå·±çš„å®Œæ•´çš„ä»£ç ï¼ŒåŒ…æ‹¬å¼•ç”¨çš„javascriptåº“ç­‰
 
-###5. ĞŞ¸Äreadme.mdÎÄ¼ş£¬ÔÚ¸ÃÎÄ¼şÀïĞ´×÷ÒµµÄ½éÉÜ£¬±àĞ´¸ÃÎÄ¼şÊ¹ÓÃµÄÊÇmarkdownÓï·¨£¬¿ÉÒÔÉÏÍøÉÏ²éÓï·¨¸ñÊ½£¬Ò²¿ÉÒÔ²Î¿¼ÕâÆªÎÄÕÂ[markdownÓï·¨ËµÃ÷](http://wowubuntu.com/markdown/basic.html)
+###5. ä¿®æ”¹readme.mdæ–‡ä»¶ï¼Œåœ¨è¯¥æ–‡ä»¶é‡Œå†™ä½œä¸šçš„ä»‹ç»ï¼Œç¼–å†™è¯¥æ–‡ä»¶ä½¿ç”¨çš„æ˜¯markdownè¯­æ³•ï¼Œå¯ä»¥ä¸Šç½‘ä¸ŠæŸ¥è¯­æ³•æ ¼å¼ï¼Œä¹Ÿå¯ä»¥å‚è€ƒè¿™ç¯‡æ–‡ç« [markdownè¯­æ³•è¯´æ˜](http://wowubuntu.com/markdown/basic.html)
 
-###6. ÔÚÒÔÉÏ²½ÖèÍê³ÉÖ®ºó¿ÉÒÔÉÏ´«´úÂë£¬°´×¡shiftÍ¬Ê±ÓÒ¼ü£¬Ñ¡ÔñÔÚ´Ë´¦´ò¿ªÃüÁî´°¿Ú¡£ÒÀ´ÎÊäÈëÒÔÏÂÃüÁî
-+ git add . 	//Ìí¼ÓÎÄ¼ş
-+ git commit -m "×¢ÊÍ" //Ìá½»µ½±¾µØ
-+ git push origin *local_name*	//*×¢Òâ*£ººÍµÚÈı²½Ò»Ñù£¬local_nameÌæ»»Îª×Ô¼ºµÄÃû×Ö£¬¸ñÊ½ÎªLastnameFirstname_LastnameFirstname_A3£¬ÒªºÍÉÏÃæµÄlocal_name±£³ÖÒ»ÖÂ,usernameÊÇvis2014@163.com, passwordÊÇvis_2014
+###6. åœ¨ä»¥ä¸Šæ­¥éª¤å®Œæˆä¹‹åå¯ä»¥ä¸Šä¼ ä»£ç ï¼ŒæŒ‰ä½shiftåŒæ—¶å³é”®ï¼Œé€‰æ‹©åœ¨æ­¤å¤„æ‰“å¼€å‘½ä»¤çª—å£ã€‚ä¾æ¬¡è¾“å…¥ä»¥ä¸‹å‘½ä»¤
++ git add . 	//æ·»åŠ æ–‡ä»¶
++ git commit -m "æ³¨é‡Š" //æäº¤åˆ°æœ¬åœ°
++ git push origin *local_name*	//*æ³¨æ„*ï¼šå’Œç¬¬ä¸‰æ­¥ä¸€æ ·ï¼Œlocal_nameæ›¿æ¢ä¸ºè‡ªå·±çš„åå­—ï¼Œæ ¼å¼ä¸ºLastnameFirstname_LastnameFirstname_A3ï¼Œè¦å’Œä¸Šé¢çš„local_nameä¿æŒä¸€è‡´,usernameæ˜¯vis2014@163.com, passwordæ˜¯vis_2014
 
-###7. ÕâÊ±ÔÙ´Î²é¿´githubµÄ´úÂë£¬[Assignment3](https://github.com/vis2014/Assignment3)£¬ÔÚ×Ô¼ºµÄ·ÖÖ§Àï¾Í¿ÉÒÔ¿´µ½×Ô¼ºµÄ´úÂëÁË
+###7. è¿™æ—¶å†æ¬¡æŸ¥çœ‹githubçš„ä»£ç ï¼Œ[Assignment3](https://github.com/vis2014/Assignment3)ï¼Œåœ¨è‡ªå·±çš„åˆ†æ”¯é‡Œå°±å¯ä»¥çœ‹åˆ°è‡ªå·±çš„ä»£ç äº†
