@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+    <style type="text/css">
+
+svg {
+  font-size: 14px;
+}
+
+.foreground path {
+  fill: none;
+  stroke-opacity: .5;
+  stroke-width: 1.5px;
+}
+
+.foreground path.fade {
+  stroke: #000;
+  stroke-opacity: .05;
+}
+
+.legend {
+  font-size: 18px;
+  font-style: oblique;
+}
+
+.legend line {
+  stroke-width: 2px;
+}
+
+
+.c00{
+    stroke:#10;
+}
+.c01{
+    stroke:#10;
+}
+.c1{
+    stroke:#10;
+}
+.c2{
+    stroke:#20;
+}
+.c3{
+    stroke:#30;
+}
+.c4{
+    stroke:#40;
+}
+.c5{
+    stroke:#50;
+}
+.c6{
+    stroke:#60;
+}
+.c7{
+    stroke:#70;
+}
+.c8{
+    stroke:#80;
+}
+.c9{
+    stroke:#90;
+}
+.c10{
+    stroke:#100;
+}
+.c11{
+    stroke:#110;
+}
+.c12{
+    stroke:#120;
+}
+.c13{
+    stroke:#130;
+}
+.c14{
+    stroke:#140;
+}
+.c15{
+    stroke:#150;
+}
+.c16{
+    stroke:#160;
+}
+.c17{
+    stroke:#170;
+}
+.c18{
+    stroke:#180;
+}
+.c19{
+    stroke:#190;
+}
+.c20{
+    stroke:#200;
+}
+.c21{
+    stroke:#210;
+}
+.c22{
+    stroke:#220;
+}
+.c23{
+    stroke:#230;
+}
+.c24{
+    stroke:#240;
+}
+.c25{
+    stroke:#250;
+}
+.c26{
+    stroke:#260;
+}
+.c27{
+    stroke:#270;
+}
+.c28{
+    stroke:#280;
+}
+.c29{
+    stroke:#290;
+}
+.c30{
+    stroke:#300;
+}
+.c31{
+    stroke:#310;
+}
+.c32{
+    stroke:#320;
+}
+.c33{
+    stroke:#330;
+}
+.c34{
+    stroke:#340;
+}
+.c35{
+    stroke:#350;
+}
+.c36{
+    stroke:#360;
+}
+.c37{
+    stroke:#370;
+}
+.c38{
+    stroke:#380;
+}
+.c39{
+    stroke:#390;
+}
+.c40{
+    stroke:#400;
+}
+.c41{
+    stroke:#410;
+}
+.c42{
+    stroke:#420;
+}
+.c43{
+    stroke:#430;
+}
+.c44{
+    stroke:#440;
+}
+.c45{
+    stroke:#450;
+}
+.c46{
+    stroke:#460;
+}
+.c47{
+    stroke:#470;
+}
+.c48{
+    stroke:#480;
+}
+.c49{
+    stroke:#490;
+}
+.c50{
+    stroke:#500;
+}
+
+
+
+
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+.axis line, .axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  text-shadow: 0 1px 0 #fff;
+  cursor: move;
+}
+
+    </style>
+  </head>
+  <body>
+   
+    <script type="text/javascript" src="d3/d3.js"></script>
+    <script type="text/javascript" src="d3/d3.csv.js"></script>
+    <script type="text/javascript">
+
+var name = ["t1", "c2", "t3", "t4", "t5"],
+    traits = ["qishu","num1", "num2", "num3", "num4","num5"];
+
+var m = [80, 160, 200, 160],
+    w = 1280 - m[1] - m[3],
+    h = 800 - m[0] - m[2];
+
+var x = d3.scale.ordinal().domain(traits).rangePoints([0, w]),
+    y = {};
+
+var line = d3.svg.line(),
+    axis = d3.svg.axis().orient("left"),
+    foreground;
+
+var svg = d3.select("body").append("svg:svg")
+    .attr("width", w + m[1] + m[3])
+    .attr("height", h + m[0] + m[2])
+  .append("svg:g")
+    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+
+d3.csv("iris.csv", function(flowers) {
+
+  // Create a scale and brush for each trait.
+  traits.forEach(function(d) {
+    // Coerce values to numbers.
+    flowers.forEach(function(p) { p[d] = +p[d]; });
+
+    y[d] = d3.scale.linear()
+        .domain(d3.extent(flowers, function(p) { return p[d]; }))
+        .range([h, 0]);
+
+    y[d].brush = d3.svg.brush()
+        .y(y[d])
+        .on("brush", brush);
+ });
+
+  // Add a legend.
+  var legend = svg.selectAll("g.legend")
+      .data(name)
+    .enter().append("svg:g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 584) + ")"; });
+
+  legend.append("svg:line")
+      .attr("class", String)
+      .attr("x2", 8);
+
+  legend.append("svg:text")
+      .attr("x", 12)
+      .attr("dy", ".31em")
+      .text(function(d) { return "Iris " + d; });
+
+  // Add foreground lines.
+  foreground = svg.append("svg:g")
+      .attr("class", "foreground")
+    .selectAll("path")
+      .data(flowers)
+    .enter().append("svg:path")
+      .attr("d", path)
+      .attr("class", function(d) { return d.name; });
+
+  // Add a group element for each trait.
+  var g = svg.selectAll(".trait")
+      .data(traits)
+    .enter().append("svg:g")
+      .attr("class", "trait")
+      .attr("transform", function(d) { return "translate(" + x(d) + ")"; })
+      .call(d3.behavior.drag()
+      .origin(function(d) { return {x: x(d)}; })
+      .on("dragstart", dragstart)
+      .on("drag", drag)
+      .on("dragend", dragend));
+
+  // Add an axis and title.
+  g.append("svg:g")
+      .attr("class", "axis")
+      .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
+    .append("svg:text")
+      .attr("text-anchor", "middle")
+      .attr("y", -9)
+      .text(String);
+
+  // Add a brush for each axis.
+  g.append("svg:g")
+      .attr("class", "brush")
+      .each(function(d) { d3.select(this).call(y[d].brush); })
+    .selectAll("rect")
+      .attr("x", -8)
+      .attr("width", 16);
+
+  function dragstart(d) {
+    i = traits.indexOf(d);
+  }
+
+  function drag(d) {
+    x.range()[i] = d3.event.x;
+    traits.sort(function(a, b) { return x(a) - x(b); });
+    g.attr("transform", function(d) { return "translate(" + x(d) + ")"; });
+    foreground.attr("d", path);
+  }
+
+  function dragend(d) {
+    x.domain(traits).rangePoints([0, w]);
+    var t = d3.transition().duration(500);
+    t.selectAll(".trait").attr("transform", function(d) { return "translate(" + x(d) + ")"; });
+    t.selectAll(".foreground path").attr("d", path);
+  }
+});
+
+// Returns the path for a given data point.
+function path(d) {
+  return line(traits.map(function(p) { return [x(p), y[p](d[p])]; }));
+}
+
+// Handles a brush event, toggling the display of foreground lines.
+function brush() {
+  var actives = traits.filter(function(p) { return !y[p].brush.empty(); }),
+      extents = actives.map(function(p) { return y[p].brush.extent(); });
+	  
+	/*  
+  foreground.classed("fade", function(d) {
+    return !actives.every(function(p, i) {
+      return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+    });
+  });
+  */
+  
+  
+    foreground.style("display", function(d) {
+    return actives.every(function(p, i) {
+        if(p == "name"){
+            var temp;
+            for(var j=0;j<name.length;j++){
+                if(name[j] == d[p])
+                {temp = j+1;break;}
+            }
+            if(extents[i][0] <= temp*460/50 && temp*460/50 <= extents[i][1]){
+                var texts = document.getElementsByTagName("text");
+                for(var j=0;j<texts.length;j++){
+                    if(texts[j].innerHTML == d["name"]){
+                        texts[j].setAttribute("fill","red");
+                    }
+                }
+            }
+            else{
+                var texts = document.getElementsByTagName("text");
+                for(var j=0;j<texts.length;j++){
+                    if(texts[j].innerHTML == d["name"]){
+                        texts[j].setAttribute("fill",null);
+                    }
+                }
+            }
+            return extents[i][0] <= temp*460/50 && temp*460/50 <= extents[i][1];
+        }
+        if(extents[i][0] <= d[p] && d[p] <= extents[i][1]){
+            var texts = document.getElementsByTagName("text");
+            for(var j=0;j<texts.length;j++){
+                //texts[j].setAttribute("fill",null);
+                if(texts[j].innerHTML == d["name"]){
+                    texts[j].setAttribute("fill","red");
+                }
+            }
+        }
+        else{
+            var texts = document.getElementsByTagName("text");
+            for(var j=0;j<texts.length;j++){
+                if(texts[j].innerHTML == d["name"]){
+                    texts[j].setAttribute("fill",null);
+                }
+            }
+        }
+      return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+    }) ? null : "none";
+  });
+  
+}
+
+    </script>
+  </body>
+</html>
