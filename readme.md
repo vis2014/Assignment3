@@ -1,12 +1,11 @@
-@@ -0,0 +1,23 @@
 #Assignment III :Text data Visualization
 
 ###1. Introduction
-
 + In this assignment our team decide to generate the word cloud to visualize something that cannot be seen in our daily life.
 > Our thought is that we can compare the words said by somebody and find whether there is something interesting. And we use D3 and JetBrains WebStorm 7.0.1 tool to develop the project.
   In this project we tend to make a word cloud, but not simply the word cloud among all the words we get, we just make them together and generate the word cloud in different colors.
  We put the words on the screen according to the frequency of the words showed in the documents or any the user input in the input box.
+
 + Team members:
 > *WangQinYong* (201428015029053)    
 > *YangTao07* (201428015059076)
