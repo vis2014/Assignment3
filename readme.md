@@ -1,6 +1,6 @@
 # Word Cloud by Zhang baoting and Song Mengdie
 
-##Library we use£º
+##Library we use:
 + d3.js
 + jquery.min.js
 + d3.layout.cloud.js
