@@ -1,3 +1,11 @@
+##Assignment2 link
+[https://github.com/vis2014/Assignment2/tree/yijia_wangzhuo_A2](https://github.com/vis2014/Assignment2/tree/yijia_wangzhuo_A2)
+
+__Attention, Final Score = 0.5 * Assigment2 + 0.5 Assignment3__
+
+the partition at the course website is not correct, please ensure.
+
+
 ##copyright
 __you can not use the source code before the final check by the teacher.__
 
