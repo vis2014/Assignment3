@@ -1,0 +1,26 @@
+
+/* Copyright 2014 Tianchuang & Sunchao */
+.node {
+    cursor: pointer;
+}
+
+.node:hover {
+    stroke: #000;
+    stroke-width: 1.5px;
+}
+/* 圆内填充颜色*/
+.node--leaf {
+    fill: #F8F8F8;
+}
+/* 圆内字体大小、内容位置阴影*/
+.label {
+    font: 31px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-anchor: middle;
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+}
+
+.label,
+.node--root,
+.node--leaf {
+    pointer-events: none;
+}
