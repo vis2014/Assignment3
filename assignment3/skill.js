@@ -7,7 +7,7 @@ function initchart() {
         depth: 1
     };
     chart.refreshChart(data)
-    console.log(222);
+
 }
 
 var brand=["韩国SZ",
@@ -113,7 +113,7 @@ function qidong(data) {
 
 function mouseover(data) {
    // chart.refreshChart(data);
-    
+    d3.select("#skills-chart-breadcrumb").classed("hidden", false);
     if(data.children.length === 1)
 		qidong(data);
 	else
@@ -130,12 +130,17 @@ function mouseover(data) {
 
 
 function mouseleave() {
-	
+
+
+    d3.selectAll(".foreground path").classed("fadea", false);
+    d3.select("#skills-chart-breadcrumb").classed("hidden", true);
+
+
     d3
-        .selectAll("path")
+        .selectAll(".skills-sunburst path")
         .on("mouseover", null);
     d3
-        .selectAll("path")
+        .selectAll(".skills-sunburst path")
         .transition()
         .duration(1e3)
         .style("opacity", 1)
@@ -268,10 +273,23 @@ var chart = function (d3) {
 	
     function refreshChart(data) {
         var e = processdata(data);
-		console.log(data.key);
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		var species = ["sp", "cd", "djd", "zb", "nx", "nzx", "nz", "nzz"],
-            traits = ["money(w)", "itemNumber", "customers","moneyperitem","moneypercust","itempercust"];
+            traits = ["money/w", "itemNumber/w", "customers/w","money/item","money/customer","item/customer"];
 
 
 		var m = [40, 80, 100, 80],
@@ -555,4 +573,3 @@ sunburst
     .attr("r", rad / Math.PI)
     .attr("opacity", 0);
 initchart();
-console.log(1111);

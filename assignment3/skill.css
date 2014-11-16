@@ -32,7 +32,7 @@ body {
 }
 #skillmap .skills-chart .breadcumb-text {
   font-size: 13px;
-  font-weight: 700;
+  font-weighabsolutet: 700;
 }
 #skillmap .skills-chart #skills-chart-line {
   fill: none;
@@ -156,4 +156,9 @@ svg {
 .axis text {
   text-shadow: 0 1px 0 #fff;
   cursor: move;
+}
+
+.hidden
+{
+    visibility:  hidden ;
 }

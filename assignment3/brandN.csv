@@ -1,4 +1,4 @@
-species,money(w),itemNumber,customers,moneyperitem,moneypercust,itempercust
+species,money/w,itemNumber/w,customers/w,money/item,money/customer,item/customer
 nz,10173.0839,40.6985,35.834,249.9621337,283.8947341,1.135750963
 nz,7000.7705,47.3849,42.6693,147.7426459,164.0704324,1.110515054
 nz,6485.9966,29.1808,26.7581,222.2693209,242.3937649,1.090540808
