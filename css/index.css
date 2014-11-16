@@ -1,0 +1,25 @@
+body {
+	font-family: "Microsoft Yahei","Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB";
+    margin: 0 auto;
+}
+
+#description {
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+#description span {
+    color: #FF0000;
+    font-size: 28px;
+}
+
+.circles {
+    cursor: pointer;
+    stroke-width: 1.5px;
+}
+
+.text {
+    cursor: pointer;
+    font-size: 10px;
+}
