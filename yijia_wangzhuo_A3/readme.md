@@ -3,6 +3,11 @@ __you can not use the source code before the final check by the teacher.__
 
 designed by __wangzhuo__ and __yijia__.
 
+##attention!!!!!
+__we can not reach the [course website](http://211.147.15.14/UCAS_14_Fall/index.php/Home) at 16th,Nov,so we add wiki here.__ 
+
+__Dear Mr Shi, we are so sorry. But we submit our on time at 11:00pm, 16th, Nov.__
+
 ##data source
 We got the results from a questionnaire about favourite sports ranging from 0 to 10 points in network, and 151 students participated in the survey. The sports in the questionnaire are tennis,football,basketball and swimming. At last transform the results into a csv file.
 
@@ -21,5 +26,23 @@ View our results at [http://yijia.ws/pages/hobbies.html](http://yijia.ws/pages/h
 ##offline
 To see all effects, we recommand you to use firefox. If you must use chrome, please set your local server.
 
-ex, for python, you can type: __python -m SimpleHTTPServer 8888__, then you can visit [http://localhost:8888](http://localhost:8888).
+e.g., for python, you can type: __python -m SimpleHTTPServer 8888__, then you can visit [http://localhost:8888](http://localhost:8888).
+
+##analysis
+###classify the data into n parts
+*	You can see just one kind of type when you type '1' .And you can type any number between 1 to 20 to see all kinds of types.
+*	here are some screen shoots.
+
+![img](./yijia_wangzhuo_A3_1.PNG)
+
+###check one class of our data
+*	type a number in the second blank, you'll see one type of the data.
+*	You can see at most 20 types of our data show by 20 different colors.
+*	knn classify is used here.
+![img](./yijia_wangzhuo_A3_2.PNG)
+
+###see all classes
+*	when hit the button 'seeAllClasses', all of our data will show to you.
+*	just enjoy.
+![img](./yijia_wangzhuo_A3_3.PNG)
 
