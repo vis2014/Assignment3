@@ -17,4 +17,13 @@ The Added Value of the Tertiary Industry From 1989 To 2013
 ###4. Data
 + [Data address](http://data.stats.gov.cn/workspace/index?m=hgnd).
 
-###5. Assignment2/Assignment3=0.6/0.4
+###5.Return Assignment2
+
+GithubAddress：[Lihao_Chenpeiwei_A2](https://github.com/vis2014/Assignment2/tree/Lihao_Chenpeiwei_A2).
+
+
+
+###6.Proportion
+
++ Assignment2:0.4
++ Assignment3:0.6
