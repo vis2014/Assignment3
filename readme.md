@@ -1,24 +1,20 @@
-@@ -0,0 +1,23 @@
-#下面介绍github的使用方法：
-###1. github地址：[Assignment3](https://github.com/vis2014/Assignment3).
+The Added Value of the Tertiary Industry From 1989 To 2013
+============
+###1. GithubAddress：[Lihao_Chenpeiwei_A3](https://github.com/vis2014/Assignment3/tree/Lihao_Chenpeiwei_A3).
 
-###2. 安装git：
-+ git工具用来获取远程代码以及提交代码。
-+ 下载地址： [git](http://git-scm.com/downloads) 。
+###2. The file includes:
 
-###3. 获取github上的代码：
-+ 在一个单独的文件夹中，例如E:\git，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git clone https://github.com/vis2014/Assignment3.git		//克隆代码,username是vis2014@163.com, password是vis_2014
-+ cd Assignment3		//进入文件夹Assignment3
-+ git checkout -b *local_name* origin/master	//创建自己的分支，*注意*：local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3 
++ Third2.html: The main html.
++ d3.js.: D3 library.
++ Third1.js: The D3 script to read network data and create visualization.
 
-###4. 在Assignment3文件夹中放入自己的完整的代码，包括引用的javascript库等
 
-###5. 修改readme.md文件，在该文件里写作业的介绍，编写该文件使用的是markdown语法，可以上网上查语法格式，也可以参考这篇文章[markdown语法说明](http://wowubuntu.com/markdown/basic.html)
+###3. Analysis of the Visualization
++ The added value of the tertiary industry is composed of six parts, which are hotels and catering services, the real estate, transportation storage, finance, wholesale and retail and the others. The chart tells us the added value and its proportion of each part of the tertiary industry from 1989 to 2013. They are all connected.
++ When the mouse points at any part of the tertiary industry, it will shows us the added value in each year from 1989 to 2013 in a special color.
++ What’s more, if we want to know the details of the added value of some year, all we need is to move our mouse to this year. For instance, when the mouse points to the year of 2000, we can get the added values of all the six parts and their proportion. In the year of 2000, the hotels and catering services contributed least to the tertiary industry, followed by the finance. 
 
-###6. 在以上步骤完成之后可以上传代码，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git add . 	//添加文件
-+ git commit -m "注释" //提交到本地
-+ git push origin *local_name*	//*注意*：和第三步一样，local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3，要和上面的local_name保持一致,username是vis2014@163.com, password是vis_2014
+###4. Data
++ [Data address](http://data.stats.gov.cn/workspace/index?m=hgnd).
 
-###7. 这时再次查看github的代码，[Assignment3](https://github.com/vis2014/Assignment3)，在自己的分支里就可以看到自己的代码了
+###5. Assignment2/Assignment3=0.6/0.4
