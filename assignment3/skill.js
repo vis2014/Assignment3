@@ -270,19 +270,6 @@ var chart = function (d3) {
         var e = processdata(data);
 		console.log(data.key);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		var species = ["sp", "cd", "djd", "zb", "nx", "nzx", "nz", "nzz"],
             traits = ["money(w)", "itemNumber", "customers","moneyperitem","moneypercust","itempercust"];
 
