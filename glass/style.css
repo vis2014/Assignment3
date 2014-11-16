@@ -1,0 +1,82 @@
+svg {
+    font-size: 14px;
+}
+
+.foreground path {
+    fill: none;
+    stroke-opacity: .5;
+    stroke-width: 1.5px;
+}
+
+.foreground path.fade {
+    stroke: #aaa;
+    stroke-opacity: .05;
+}
+
+.foreground path.melt {
+    stroke-width: 0px;
+}
+
+.foreground path.notselect {
+    stroke: #aaa;
+    stroke-opacity: 0.05;
+}
+
+.foreground path.select {
+    stroke-width: 5px;
+}
+
+.legend {
+    font-size: 18px;
+    font-style: oblique;
+}
+
+.legend line {
+    stroke-width: 2px;
+}
+
+
+.build_wind_float{
+    stroke:#f22;
+}
+
+.build_wind_non-float{
+    stroke: green;
+}
+
+.vehic_wind_float{
+    stroke: blue;
+}
+
+.vehic_wind_non-float{
+    stroke: pink;
+}
+
+.containers{
+    stroke: yellow;
+}
+
+.tableware{
+    stroke: orange;
+}
+
+.headlamps{
+    stroke: purple;
+}
+
+.brush .extent {
+    fill-opacity: .3;
+    stroke: #fff;
+    shape-rendering: crispEdges;
+}
+
+.axis line, .axis path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    text-shadow: 0 1px 0 #fff;
+    cursor: move;
+}
