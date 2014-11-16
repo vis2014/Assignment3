@@ -1,24 +1,25 @@
-@@ -0,0 +1,23 @@
-#下面介绍github的使用方法：
-###1. github地址：[Assignment3](https://github.com/vis2014/Assignment3).
+##copyright
+__you can not use the source code before the final check by the teacher.__
 
-###2. 安装git：
-+ git工具用来获取远程代码以及提交代码。
-+ 下载地址： [git](http://git-scm.com/downloads) 。
+designed by __wangzhuo__ and __yijia__.
 
-###3. 获取github上的代码：
-+ 在一个单独的文件夹中，例如E:\git，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git clone https://github.com/vis2014/Assignment3.git		//克隆代码,username是vis2014@163.com, password是vis_2014
-+ cd Assignment3		//进入文件夹Assignment3
-+ git checkout –b *local_name* origin/master	//创建自己的分支，*注意*：local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3 
+##data source
+We got the results from a questionnaire about favourite sports ranging from 0 to 10 points in network, and 151 students participated in the survey. The sports in the questionnaire are tennis,football,basketball and swimming. At last transform the results into a csv file.
 
-###4. 在Assignment3文件夹中放入自己的完整的代码，包括引用的javascript库等
+The information in the csv file include __name__, __bastketball__,__football__,__tennis__,__swimming__ .
 
-###5. 修改readme.md文件，在该文件里写作业的介绍，编写该文件使用的是markdown语法，可以上网上查语法格式，也可以参考这篇文章[markdown语法说明](http://wowubuntu.com/markdown/basic.html)
 
-###6. 在以上步骤完成之后可以上传代码，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git add . 	//添加文件
-+ git commit -m "注释" //提交到本地
-+ git push origin *local_name*	//*注意*：和第三步一样，local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3，要和上面的local_name保持一致,username是vis2014@163.com, password是vis_2014
+##description
+*   Different from the iris-parallel example, there are no classified species before visualization, therefore we introduced the K-nearestNeighbour Algorithm to divide the students into different teams according to their favourite degree on the sports mentioned above automatically. 
+*   But the user should input a number between 1 and 20 in the [input type="text"]() to specify the number of classes, then we'll show the lines in different color. Besides, one color means a different class from the others. 
+*   Maybe all classes showed simultaneously is too massive, we offer an option to show specified class, what you need to do is just type a number between 0 and classNumber-1 in the second text area. After that, you could see the class of which the students have the similar favourites.
+*   Click "seeAllClasses" button to see all classes you specified.
 
-###7. 这时再次查看github的代码，[Assignment3](https://github.com/vis2014/Assignment3)，在自己的分支里就可以看到自己的代码了
+##Online
+View our results [here](http://yijia.ws/pages/force_new.html) online.
+
+##offline
+To see all effects, we recommand you to use firefox. If you must use chrome, please set your local server.
+
+ex, for python, you can type: __python -m SimpleHTTPServer 8888__, then you can visit [http://localhost:8888](http://localhost:8888).
+

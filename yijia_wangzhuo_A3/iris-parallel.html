@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+    <style type="text/css">
+
+svg {
+  font-size: 14px;
+}
+
+.fixed_div{
+      position:fixed;
+      font-size:18px;
+      top: 22%;  
+      left: 41%;  
+      margin-left: -180px; /*要居中的div的宽度的一半*/  
+      margin-top: -120px; /*要居中的div的高度的一半*/  
+}
+
+.foreground path {
+  fill: none;
+  stroke-opacity: .5;
+  stroke-width: 1.5px;
+}
+
+.foreground path.fade {
+  stroke: #000;
+  stroke-opacity: .05;
+}
+
+.legend {
+  font-size: 18px;
+  font-style: oblique;
+}
+
+.legend line {
+  stroke-width: 2px;
+}
+
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+.axis line, .axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  text-shadow: 0 1px 0 #fff;
+  cursor:move;
+ }
+
+    </style>
+  </head>
+  <body>
+
+<div style=" height:600px; border:2px;"></div>
+<div class="fixed_div" style="border:1px">
+
+    <b>Specify&nbsp;a&nbsp;number&nbsp;of&nbsp;classes:&nbsp;&nbsp;&nbsp;</b>
+    <input type="text" id="classNumber" placeholder="default value is 4,Enter to run" onchange="do_classfied()">
+    <input type="button" id="classesButton" value="startClassfy" onclick="do_classfied()">
+    <br/>
+    <b>Check&nbsp;one&nbsp;class&nbsp;of&nbsp;our&nbsp;data:&nbsp;&nbsp;&nbsp;</b>
+    <input type="text" id="classOrder" placeholder="start with 0,Enter to run" onchange="do_display()" >
+    <input type="button" id="OrderButton" value="startToShow" onclick="do_display()">
+    </br>
+    <b>Hit&nbsp;button&nbsp;to&nbsp;see&nbsp;all&nbsp;classes:&nbsp;&nbsp;&nbsp;</b>
+
+    <input type="button" id="seeAllClasses" value="seeAllClasses" onclick = "showAll()">
+</div>
+
+    <script type="text/javascript" src="d3/d3.js"></script>
+    <script type="text/javascript" src="d3/d3.csv.js"></script>
+    <script type="text/javascript" src="classfied.js"></script>
+    <script type="text/javascript">
+
+var species = ["A", "B", "C"],
+    traits = ["basketball", "football", "swimming", "tennis"];
+
+var m = [80, 160, 200, 160],
+    w = 1280 - m[1] - m[3],
+    h = 800 - m[0] - m[2];
+
+var x = d3.scale.ordinal().domain(traits).rangePoints([0, w]),
+    y = {};
+
+var line = d3.svg.line(),
+    axis = d3.svg.axis().orient("left"),
+    foreground;
+
+var svg = d3.select("div").append("svg:svg")
+    .attr("width", w + m[1] + m[3])
+    .attr("height", h + m[0] + m[2])
+  .append("svg:g")
+    .attr("transform", "translate(" + 40 + "," + 100 + ")");
+var samples=null;
+var classfiedPoints=null;
+var specialClasses =4;
+d3.csv("iris.csv", function(flowers) {
+  
+  samples = flowers;
+  // Create a scale and brush for each trait.
+  traits.forEach(function(d) {
+    // Coerce values to numbers.
+    flowers.forEach(function(p) { p[d] = +p[d]; });
+
+    y[d] = d3.scale.linear()
+        .domain(d3.extent(flowers, function(p) { return p[d]; }))
+        .range([h, 0]);
+
+    y[d].brush = d3.svg.brush()
+        .y(y[d])
+        .on("brush", brush);
+ });
+
+
+
+  // Add foreground lines.
+  foreground = svg.append("svg:g")
+      .attr("class", "foreground")
+    .selectAll("path")
+      .data(flowers)
+    .enter().append("svg:path")
+      .attr("d", path)
+      .style("stroke",'black');
+
+  // Add a group element for each trait.
+  var g = svg.selectAll(".trait")
+      .data(traits)
+    .enter().append("svg:g")
+      .attr("class", "trait")
+      .attr("transform", function(d) { return "translate(" + x(d) + ")"; })
+      .call(d3.behavior.drag()
+      .origin(function(d) { return {x: x(d)}; })
+      .on("dragstart", dragstart)
+      .on("drag", drag)
+      .on("dragend", dragend));
+
+  // Add an axis and title.
+  g.append("svg:g")
+      .attr("class", "axis")
+      .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
+    .append("svg:text")
+      .attr("text-anchor", "middle")
+     .attr("y", -9)
+      .text(String);
+
+  // Add a brush for each axis.
+  g.append("svg:g")
+      .attr("class", "brush")
+      .each(function(d) { d3.select(this).call(y[d].brush); })
+    .selectAll("rect")
+      .attr("x", -8)
+      .attr("width", 16);
+  classfiedPoints =   K_classfied(specialClasses);
+  colorGroup();
+  function dragstart(d) {
+    i = traits.indexOf(d);
+  }
+
+  function drag(d) {
+    x.range()[i] = d3.event.x;
+    traits.sort(function(a, b) { return x(a) - x(b); });
+    g.attr("transform", function(d) { return "translate(" + x(d) + ")"; });
+    foreground.attr("d", path);
+  }
+
+  function dragend(d) {
+    x.domain(traits).rangePoints([0, w]);
+    var t = d3.transition().duration(500);
+    t.selectAll(".trait").attr("transform", function(d) { return "translate(" + x(d) + ")"; });
+    t.selectAll(".foreground path").attr("d", path);
+  }
+});
+// Returns the path for a given data point.
+function path(d) {
+  return line(traits.map(function(p) { return [x(p), y[p](d[p])]; }));
+}
+
+// Handles a brush event, toggling the display of foreground lines.
+function brush() {
+  var actives = traits.filter(function(p) { return !y[p].brush.empty(); }),
+      extents = actives.map(function(p) { return y[p].brush.extent(); });
+  foreground.classed("fade", function(d) {
+    return !actives.every(function(p, i) {
+      return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+    });
+  });
+}
+
+function colorGroup(){
+	var sequence = ['red','green','blue','black','sienna','DarkOrange','Olive','yellow','Turquoise','cyan','Purple','Pink','DarkSlateGray','Lime','Tan','DeepSkyBlue','Fuchsia','navy','ForestGreen','Chartreuse'];
+	for(var outer = 0;outer<classfiedPoints.length;outer++){
+		for(var inner =0;inner<classfiedPoints[outer].length;inner++){
+			foreground[0][classfiedPoints[outer][inner]].style.stroke = sequence[outer];
+      foreground[0][classfiedPoints[outer][inner]].style.opacity=1;
+		}
+	}
+}
+
+function display(i){
+	for(var outer=0;outer<classfiedPoints.length;outer++){
+		if(outer==i)
+			continue;
+		for(var inner=0;inner<classfiedPoints[outer].length;inner++){
+			foreground[0][classfiedPoints[outer][inner]].style.opacity = 0;
+		}
+	}
+}
+
+function do_classfied(){
+	var ToClass = document.getElementById("classNumber").value;
+	if(!isNaN(ToClass)){
+		ToClass = parseInt(ToClass);
+		if(ToClass<1||ToClass>20){
+			alert("the class number should be between 1 and 20~");
+			return;
+		}else{
+			specialClasses = ToClass;
+			classfiedPoints = K_classfied(specialClasses);
+			colorGroup();
+		}
+	}else{
+		alert("please input an integer between 1 and 20");
+		return;
+	}
+	
+}
+
+function do_display(){
+	var showClass = document.getElementById("classOrder").value;
+	if(!isNaN(showClass)){
+		showClass = parseInt(showClass);
+		if(showClass<0||showClass>=specialClasses){
+			alert("the class number should be between 0 and "+String(specialClasses-1));
+			return;
+		}else{
+			foreground.style("opacity",1);
+			display(showClass);
+		}
+	}else{
+		alert("please input an integer between 0 and "+String(specialClasses));
+		return;
+	}
+}
+
+function showAll(){
+	foreground.style("opacity",1);
+}
+
+    </script>
+    
+  </body>
+</html>
+
