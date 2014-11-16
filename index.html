@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<body>
+<div class="description">
+  <span>作者:王逢阳，祝燕冠中</span><br/>
+  <span>标题:我的成长经历</span><br/>
+  <span>制作方案:通过学习D3官网例子，修改例子源码而成</span><br/>
+  <span>描述:本次课程的可视化，我们采用自己的成长经历文本，转化成JSON数据，用树状形式展现。</span><br/>
+</div>
+
+<script src="js/d3.js"></script>
+<script>
+
+var width = 1024,
+    height = 2000;
+
+var cluster = d3.layout.cluster()
+    .size([height, width - 160]);
+
+var diagonal = d3.svg.diagonal()
+    .projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(80,0)");
+
+d3.json("json/data.json", function(error, root) {
+  var nodes = cluster.nodes(root),
+      links = cluster.links(nodes);
+
+  var link = svg.selectAll(".link")
+      .data(links)
+      .enter().append("path")
+      .attr("class", "link")
+      .style("stroke", function(d){return d.color;})//设置画笔颜色
+      .attr("d", diagonal);
+
+  var node = svg.selectAll(".node")
+      .data(nodes)
+      .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+
+  node.append("circle")
+      .attr("r", function(d) {return d.r*4;})
+      .style("stroke", function(d){return d.color;})//设置画笔颜色;
+
+  node.append("text")
+      .attr("dx", function(d) { return d.children ? -5*d.r : 5*d.r; })
+      .attr("dy", 3)
+      .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
+      .text(function(d) { return d.name; });
+});
+
+d3.select(self.frameElement).style("height", height + "px");
+
+</script>
