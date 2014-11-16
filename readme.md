@@ -1,24 +1,13 @@
-@@ -0,0 +1,23 @@
-#下面介绍github的使用方法：
-###1. github地址：[Assignment3](https://github.com/vis2014/Assignment3).
+﻿this is the beijing map,demonstrating the popularity,GDP of BJ in 2013.
 
-###2. 安装git：
-+ git工具用来获取远程代码以及提交代码。
-+ 下载地址： [git](http://git-scm.com/downloads) 。
 
-###3. 获取github上的代码：
-+ 在一个单独的文件夹中，例如E:\git，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git clone https://github.com/vis2014/Assignment3.git		//克隆代码,username是vis2014@163.com, password是vis_2014
-+ cd Assignment3		//进入文件夹Assignment3
-+ git checkout -b *local_name* origin/master	//创建自己的分支，*注意*：local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3 
+To implement the effective,we should get familiar with the prejection.the map's latitude and longitude can accurately locate a place on the earth,but if we want to draw a map on a screen(most maps are 2-D),we should find out a algorithm to change a 3-D lat,longt data into 2-D location.So we use prejection to do such work.
 
-###4. 在Assignment3文件夹中放入自己的完整的代码，包括引用的javascript库等
 
-###5. 修改readme.md文件，在该文件里写作业的介绍，编写该文件使用的是markdown语法，可以上网上查语法格式，也可以参考这篇文章[markdown语法说明](http://wowubuntu.com/markdown/basic.html)
+The first thing to draw is to load the json map,we use the list [(latitudes,longitude)] to draw a path.Different districts have different GDP or popularity,so we use color.range() to emphasis  the variation._There is a bug in showing the popularity.Even I added more color in color.range,the map only shows two colors.But other aspects have perfect effects,which frustrated me._Additional function is mouse hovering,which could show details of a district.
 
-###6. 在以上步骤完成之后可以上传代码，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git add . 	//添加文件
-+ git commit -m "注释" //提交到本地
-+ git push origin *local_name*	//*注意*：和第三步一样，local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3，要和上面的local_name保持一致,username是vis2014@163.com, password是vis_2014
 
-###7. 这时再次查看github的代码，[Assignment3](https://github.com/vis2014/Assignment3)，在自己的分支里就可以看到自己的代码了
+the program's structure is below:
++d3/d3.js           ---this is d3 source
++data/BeijingGDP.cvs  ./BJGeoJson.json         ----*.cvs is the GDP data,*.json is the geo data. 
++BJGeo.html          ---self built javascript is embedded into the html file.
