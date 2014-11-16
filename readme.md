@@ -1,24 +1,19 @@
-@@ -0,0 +1,23 @@
-#下面介绍github的使用方法：
-###1. github地址：[Assignment3](https://github.com/vis2014/Assignment3).
+﻿#Introduction of Assignment3：
 
-###2. 安装git：
-+ git工具用来获取远程代码以及提交代码。
-+ 下载地址： [git](http://git-scm.com/downloads) 。
+###1.Description:
+	In real life, the college system is composed by different departments, the departments are consist of many classes and each class may have a number of groups for students. Similarly, a company may also have a lot of branches, each branch has a number of departments and a department has several employees. The visualization of this task is to show the company’s different levels by a Tilford tree. This means of visualization is very suitable for the data constructed by different levels. The company is the root, the different departments are the branches and the employees are the leaves of the tree.
+Just be clear, the data is downloaded from the Internet.
 
-###3. 获取github上的代码：
-+ 在一个单独的文件夹中，例如E:\git，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git clone https://github.com/vis2014/Assignment3.git		//克隆代码,username是vis2014@163.com, password是vis_2014
-+ cd Assignment3		//进入文件夹Assignment3
-+ git checkout -b *local_name* origin/master	//创建自己的分支，*注意*：local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3 
+###2.Process：
+	Although we have never learned JS before, we had completed task II. Therefore, after studying some examples, we accomplish the visualization.
+[Picture](/liyaozong_zhangzhuang_A3/2.jpg)
+	If you want to see nodes on the path clearly, you can set the two drop-down boxes on the upper-left corner.
 
-###4. 在Assignment3文件夹中放入自己的完整的代码，包括引用的javascript库等
+###3.Function:
+	As we can see, we could know the specific numbers on any departments directly. If we want to check some departments, we just follow the paths and see the worker numbers of these departments. This can help the company get better coordination in different subsidiaries by adjusting the distribution of the company's staffs dynamically. Simultaneously, the company can balance the workload of different departments for the case a department’s workload is too heavy while the other same functional department is idle.
 
-###5. 修改readme.md文件，在该文件里写作业的介绍，编写该文件使用的是markdown语法，可以上网上查语法格式，也可以参考这篇文章[markdown语法说明](http://wowubuntu.com/markdown/basic.html)
+###4.Harvest：
+	Not only did we get some basic knowledge about D3 and JS, but we now have some ideas for the last assignment. At the same time, we start to be interested in the visualization and realize the importance of it.
 
-###6. 在以上步骤完成之后可以上传代码，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git add . 	//添加文件
-+ git commit -m "注释" //提交到本地
-+ git push origin *local_name*	//*注意*：和第三步一样，local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3，要和上面的local_name保持一致,username是vis2014@163.com, password是vis_2014
-
-###7. 这时再次查看github的代码，[Assignment3](https://github.com/vis2014/Assignment3)，在自己的分支里就可以看到自己的代码了
+###5.Ratio：
+	This is 0.5. 

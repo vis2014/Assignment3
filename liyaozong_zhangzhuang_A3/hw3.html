@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    .node {
+        font: 10px sans-serif;
+    }
+    .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1.5px;
+    }
+</style>
+<body>
+<script type="text/javascript" src="d3.js"></script>
+Node Size:
+<select name="nodeSize" id="nodeSize" onchange="refreshNetworkSettings(); reloadNetwork()">
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="5" selected>5</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="10">10</option>
+</select>
+Node Fill Color:
+<select name="nodeFillColor" id="nodeFillColor" onchange="refreshNetworkSettings(); reloadNetwork()">
+    <option value="blue" selected>blue</option>
+    <option value="red">red</option>
+    <option value="yellow">yellow</option>
+    <option value="green">green</option>
+</select>
+<div class="value">mouse hover brightness:</div>
+<input type="range"  min="100" max="230" step="5" value="150" >
+<br/>    <br/>
+<script>
+    var diameter = 960;
+    var nodes,links,node,link;
+    var newValue=0;
+
+    var elem = document.querySelector('input[type="range"]');
+    var tree = d3.layout.tree()
+            .size([360, diameter / 2 - 120])
+            .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+
+    var svg = d3.select("body").append("svg")
+            .attr("width", diameter)
+            .attr("height", diameter )
+            .append("g")
+            .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+
+    svg.nodeSizeSelectionId = "nodeSize";
+    svg.nodeFillColorSelectionId="nodeFillColor";
+
+    var rangeValue = function(){
+        newValue = elem.value;
+//        var target = document.querySelector('.value');
+//        target.innerHTML = newValue;
+    }
+
+    elem.addEventListener("input", rangeValue);
+
+
+    d3.json("flare.json", function (root) {
+        var current_network_data = root;
+        refreshNetworkSettings();
+        var diagonal = d3.svg.diagonal.radial()
+                .projection(function (d) {
+                    return [d.y, d.x / 180 * Math.PI];
+                });
+        nodes = tree.nodes(root);
+        links = tree.links(nodes);
+
+        link = svg.selectAll(".link")
+                .data(links)
+                .enter().append("path")
+                .attr("class", "link")
+                .attr("d", diagonal);
+
+        node = svg.selectAll(".node")
+                .data(nodes)
+                .enter().append("g")
+                .attr("class", "node")
+                .attr("transform", function (d) {
+                    return "rotate(" + (d.x  - 90 ) + ")translate(" + d.y + ")";
+                });
+
+        node.append("circle")
+                .attr("r", svg.nodeSize)
+                .attr("fill", svg.nodeFillColor)
+                .on("mouseover",function(){
+                    d3.select(this)
+                            .attr("fill","rgb("+newValue+","+newValue+","+newValue+")");
+                })
+                .on("mouseout",function(){
+                    d3.select(this)
+                            .transition()
+                            .attr("fill",svg.nodeFillColor);
+                })
+
+        node.append("text")
+                .attr("dy", ".31em")
+                .attr("text-anchor", function (d) {
+                    return d.x < 180 ? "start" : "end";
+                })
+                .attr("transform", function (d) {
+                    return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)";
+                })
+                .text(function (d) {
+                    return d.name;
+                });
+
+
+    });
+
+  //  d3.select(self.frameElement).style("height", diameter - 150 + "px");
+
+    function refreshNetworkSettings(){
+        var selectList = document.getElementById(svg.nodeSizeSelectionId);
+        var selectedValue = selectList.options[selectList.selectedIndex].getAttribute("value");
+        svg.nodeSize =  selectedValue;
+
+        selectList = document.getElementById(svg.nodeFillColorSelectionId);
+        selectedValue = selectList.options[selectList.selectedIndex].getAttribute("value");
+        svg.nodeFillColor =  selectedValue;
+    }
+
+    function reloadNetwork(){
+        document.location.reload();
+    }
+
+</script>
