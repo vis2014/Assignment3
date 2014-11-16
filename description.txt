@@ -1,0 +1,17 @@
+word cloud:
+Data source :
+Closing Remarks by H.E. Xi Jinping President of the People's Republic of China At the 22nd APEC Economic Leaders' Meeting.
+
+features:
+1.The size of the word has a positive correlation with the times the word shows in the speech.
+In Figure 3_1.png.
+2.We don't count the number of words like "and","of","I","this".They are useful for a good speech but meaningless for a good world cloud.Because they can't show the main content of the speech.
+3.The color of the word will become red when you point you mouse to it.
+In Figure 3_2.png.
+
+conclusion£º
+top  frequent words: 
+"Asia-Pacific,APEC ,development,economic,growth,coopertation,connectivity".
+1."Asia-Pacific" and"APEC " indicate the speech was addresed in the APEC conference.
+2."development ,"economic",and "growth" tell us the APEC conference is about the ecomnomy and development affairs.
+3."coopertation" and "connectivity" show that the president attached much importance to the cooperation with other countries in his speech.
