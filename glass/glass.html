@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+    <style type="text/css">
+        #title{
+            height:60px;
+            width:1280px;
+            /*border:1px solid #000;*/}
+        #vis{
+            height:800px;
+            width:1200px;
+            float:left;
+            /*border:1px solid #903*/;}
+        #ctr{
+            display: inline-block;
+            height:400px;
+            width:100px;
+            /*border:1px solid #C63*/;}
+    </style>
+</head>
+
+<body>
+<div id="title">
+    <h2>
+        <i>Glass Identification Database</i>
+    </h2>
+</div>
+<div id="vis">
+</div>
+<div id="ctr">
+    <input type="button" class = "button" value="Start" onclick = "playOn()"/>
+    <input type="button" class = "button" value="Stop" onclick = "playOff()"/>
+    <input type="button" class = "button" value="Reset" onclick = "reSet()"/>
+</div>
+<script type="text/javascript" src="d3.js"></script>
+<script type="text/javascript" src="glass.js"></script>
+</body>
+</html>
