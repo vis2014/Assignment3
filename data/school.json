@@ -1,0 +1,69 @@
+{
+  "name":"北京",
+  "children":
+  [
+    {
+      "name":"中科院" ,
+      "children":
+      [
+        {"name":"管理学院" },
+        {"name":"物理学院" },
+        {"name":"人文学院" },
+        {"name":"数学学院" }
+      ]
+    },
+    {
+      "name":"中国人大" ,
+      "children":
+      [
+        {"name":"人文学部"},
+        {"name":"社会学部"},
+        {"name":"经济学部"},
+        {"name":"理工学部"}
+      ]
+    },
+    {
+      "name":"北京大学" ,
+      "children":
+      [
+        {"name":"理学部"},
+        {"name":"跨学科学部"},
+        {"name":"信息与工程科学部"},
+        {"name":"社会科学部"}
+      ]
+    },
+    {
+      "name":"清华大学" ,
+      "children":
+      [
+        {"name":"经管学院"},
+        {"name":"建筑学院"},
+        {"name":"环境学院"}
+      ]
+    },
+    {
+      "name":"Stanford" ,
+      "children":
+      [
+        {"name":"Business"},
+        {"name":"Education"},
+        {"name":"Earth Sciences"},
+        {"name":"Law"},
+        {"name":"Medicine"},
+        {"name":"Humanities"}
+      ]
+    },
+    {
+      "name":"山东大学" ,
+      "children":
+      [
+        {"name":"数院"},
+        {"name":"海洋学院"},
+        {"name":"韩国学院"},
+        {"name":"空间物理"},
+        {"name":"机电"},
+        {"name":"商学院"}
+      ]
+    }
+  ]
+}
