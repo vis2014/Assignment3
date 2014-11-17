@@ -31,7 +31,7 @@ From the picture above we can see many sentences, and I show the parsing tree wh
 
 ![](img/1.png)
 
-We can click any sentence in picture Image_2_Wangle_A3 and see this page. In this picture, the top shows the whole sentence.In the following parsing tree, the nodes are marked serial number in sentence. I draw the parsing tree by using a special tree called hyperbolic tree which can shift the focus, so we can see the part interested while other parts is not focused. In this picture, I move mouse over the node "PP" of the left parsing tree, and we can see which words it includes through the above sentence where those words are highlighted. 
+We can click any sentence in the above picture and see this page. In this picture, the top shows the whole sentence.In the following parsing tree, the nodes are marked serial number in sentence. I draw the parsing tree by using a special tree called hyperbolic tree which can shift the focus, so we can see the part interested while other parts is not focused. In this picture, I move mouse over the node "PP" of the left parsing tree, and we can see which words it includes through the above sentence where those words are highlighted. 
 
 
 ![](img/2.png)
