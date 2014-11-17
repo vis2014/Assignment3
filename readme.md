@@ -31,5 +31,5 @@ And under the title is a show box, *which is a canvas we cannot see while we hav
 + *Our code on github:* [Assignment3](https://github.com/vis2014/Assignment3)
 
 ##Notice
-+ **There are more details and descriptions about this project on the [Wiki](http://211.147.15.14/UCAS_14_Fall/index.php/Assignment3).**
++ **There are more details and descriptions about this project on the [Wiki](http://211.147.15.14/UCAS_14_Fall/index.php/WangQinYong_YangTao07_A3).**
 
