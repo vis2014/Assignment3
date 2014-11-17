@@ -12,4 +12,4 @@ The visualization shows like below:
 
 ###Contact us
 Email: liyuepei14@mails.ucas.ac.cn
-coptyright@LiYuepei & WangHailu
+copyright©2014 by LiYuepei & WangHailu
