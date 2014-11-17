@@ -1,6 +1,6 @@
 #Assignment III
 ###1.Introduction
-We are both very interested in movies£¬and the DouBanMovie is the largest and most authoritative community of film sharing and commenting.The DouBanMovie's top250 is the most worth watching.Therefore, We choose it as the topic of this assignment.
+We are both very interested in movies, and the DouBanMovie is the largest and most authoritative community of film sharing and commenting.The DouBanMovie's top250 is the most worth watching.Therefore, We choose it as the topic of this assignment.
 This assignment will clearly show the top 50 of the movies ,including each movie's goal and popularity.
 
 ###2.Package Description
