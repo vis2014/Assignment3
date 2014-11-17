@@ -28,14 +28,6 @@
 ####The Second Part :
 + There include the Gross Regional Product, the Value-added of the Primary Industry, the Value-added of the Secondary Industry and the Value-added of the Tertiary Industry of all provinces between 2004 to 2013.
  
-###Methodology :
-
-####The First Part :
-+ 
-
-####The Second Part :
-+ 
- 
 ###Find Knowledge from the Visualization :
 
 ####The First Part :
