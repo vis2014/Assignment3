@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html  >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <title>情感词极值可视化分析</title>
+    <script type="text/javascript" charset="utf-8" src="js/d3.min.js"> </script>
+    <script type="text/javascript" charset="gb2312" src="js/SentimentWords.js"> </script>
+
+    
+
+</head>
+<body >
+    <br>   
+    <div>
+         <font color="blue" size="4">
+            <b>情感词极值：</b> <input type="radio" checked="checked" name="extremum" value="All"  onclick="refresh(this.value)" /> 全部
+             <input type="radio" name="extremum" value="positive" onclick="refresh(this.value)" />大于等于零
+             <input type="radio" name="extremum" value="negative" onclick="refresh(this.value)" />小于零
+             <p>说明：极值大于零时，极值越大图中的文字就越大；极值小于零时，极值越小图中的文字就越大</p>
+         </font>       
+    </div>  
+</body>
+</html>
