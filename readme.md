@@ -1,23 +1,23 @@
-#下面介绍github的使用方法：
-###1. github地址：[Assignment3](https://github.com/vis2014/Assignment3).
+== Brief ==
+This is about the vehicle information visualization. We draw a multivariate data visualization with the D3 tool.
 
-###2. 安装git：
-+ git工具用来获取远程代码以及提交代码。
-+ 下载地址： [git](http://git-scm.com/downloads) 。
+== Data Source ==
+The data comes from datatang.The link of data:http://www.datatang.com/data/46763
 
-###3. 获取github上的代码：
-+ 在一个单独的文件夹中，例如E:\git，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git clone https://github.com/vis2014/Assignment3.git		//克隆代码,username是vis2014@163.com, password是vis_2014
-+ cd Assignment3		//进入文件夹Assignment3
-+ git checkout –b *local_name* origin/master	//创建自己的分支，*注意*：local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3 
+== Data Processing ==
+The data from datatang is .exle format.I saved it as .csv format so that it can be used derictly by webstorm.We select a part of the data because the figure will be too narrow to be seen clearly if there are too much tuples.Vehicle attributes include name(type型号),displacement(排量),power(功率),weight(重量),length(车长) and yield(年产量).
 
-###4. 在Assignment3文件夹中放入自己的完整的代码，包括引用的javascript库等
+== Code on GitHub ==
+Please test on Firefox or Google Chrome.https://github.com/vis2014/Assignment3/tree/YingLiu_XuhongLv_A3
 
-###5. 修改readme.md文件，在该文件里写作业的介绍，编写该文件使用的是markdown语法，可以上网上查语法格式，也可以参考这篇文章[markdown语法说明](http://wowubuntu.com/markdown/basic.html)
+==Illustration&&Findings==
+*The first picture is the overall picture showed directly when the Webpage is opened.As we can see,there are six vertical axis which separately on behalf of name(type型号),displacement(排量),power(功率),weight(重量),length(车长) and yield(年产量).A broken line corresponds to the data of a type of vehicle.We can easily see the bottom line is very dense.Those lines  correspond to vehicles with small displacement, low power, light weight and short length.So we can obtain a conclusion that people like this kind of vehicle so there are more vehicle type in this kind.
+*The four pictures after are about the information corresponds to a range of data of an selected attribute.For example,in the secend picture,I selected displacement and made the range from 8 to 10,and then,there were several broken lines became yellow,and the name corresponded became blue.In this way,we can easily search the data we what and find the information of same or similar vehicles in some certain aspects.
+*In the fourth picture,the yield of high power are very low,and the  value of displacement,weight and length are also small.Combined with the first paragraph,we can draw a conclusion that most people buy a light car instead of heavy vehicle.So the manufacturers should try to produce more kinds of cars to adapt to the needs of the public.
 
-###6. 在以上步骤完成之后可以上传代码，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git add . 	//添加文件
-+ git commit -m "注释" //提交到本地
-+ git push origin *local_name*	//*注意*：和第三步一样，local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3，要和上面的local_name保持一致,username是vis2014@163.com, password是vis_2014
+==Proportion==
+*A2:50%
+*A3:50%
 
-###7. 这时再次查看github的代码，[Assignment3](https://github.com/vis2014/Assignment3)，在自己的分支里就可以看到自己的代码了
+==Link of A2==
+https://github.com/vis2014/Assignment2/tree/YingLiu_XuhongLv_A2
