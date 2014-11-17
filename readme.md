@@ -28,7 +28,7 @@ And under the title is a show box, *which is a canvas we cannot see while we hav
 ###4.Summary
 + It's very useful to use visualization in our daily life to help us analyze something.
 + And there more work we could do, compared with the example given in the Netseer, we cannot input an URL as a text, which can get the word on the webpage linked with the URL. And also we can develop more functions to the presentation of word cloud, have a better design, not this simple, and pictures are also can be played in the cloud. And more important, some better visualizations based on clouds has been developed by Yahoo Labs, the tagline, which is based on time.
-+ *Our code on github:* [Assignment3](https://github.com/vis2014/Assignment3)
++ *Our code on github:* [Assignment3](https://github.com/vis2014/Assignment3/tree/WangQinYong_YangTao07_A3)
 
 ##Notice
 + **There are more details and descriptions about this project on the [Wiki](http://211.147.15.14/UCAS_14_Fall/index.php/WangQinYong_YangTao07_A3).**
