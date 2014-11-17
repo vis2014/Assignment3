@@ -1,24 +1,33 @@
 @@ -0,0 +1,23 @@
-#下面介绍github的使用方法：
-###1. github地址：[Assignment3](https://github.com/vis2014/Assignment3).
 
-###2. 安装git：
-+ git工具用来获取远程代码以及提交代码。
-+ 下载地址： [git](http://git-scm.com/downloads) 。
+###1. 
+Assignment III:Visulization of NBA in 2013-2014 Season[edit]
 
-###3. 获取github上的代码：
-+ 在一个单独的文件夹中，例如E:\git，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git clone https://github.com/vis2014/Assignment3.git		//克隆代码,username是vis2014@163.com, password是vis_2014
-+ cd Assignment3		//进入文件夹Assignment3
-+ git checkout -b *local_name* origin/master	//创建自己的分支，*注意*：local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3 
+###2. 
+Website Address: Click to visit our website
+Github Address：Click to visit our github repository
+The visualization type is Spatiotemporal.
+The web page only supports webkit browsers (like chrome and Safari).
+Package Description[edit]
 
-###4. 在Assignment3文件夹中放入自己的完整的代码，包括引用的javascript库等
+###3.
+index.html: The main HTML file to visualize the games in 2013-2014 season of NBA.
+comp.css: The CSS file to set the style of navigation bar at below and other html elements in the page.
+set.css: The main CSS file to set the style of elements in SVG.
+d3calc.js: The main JavaScript file to visualize the NBA games.
+ui.js: The JavaScript file to fulfill the function of navigation bar and buttons.
+jquery-1.11.1.js: The jQuery library.
+jquery.mousewheel.min.js: The library of mouse wheel function for jQuery.
+d3.vs.js: D3 library.
+NBA2013_new_0.csv: The data-set obtained from http://killercappers.com with the Sport Data Query Language.
+/img: The folder containing the image resources in this project.
+/screenshot: Three screenshots of the visualization.
+Visualization Description[edit]
 
-###5. 修改readme.md文件，在该文件里写作业的介绍，编写该文件使用的是markdown语法，可以上网上查语法格式，也可以参考这篇文章[markdown语法说明](http://wowubuntu.com/markdown/basic.html)
-
-###6. 在以上步骤完成之后可以上传代码，按住shift同时右键，选择在此处打开命令窗口。依次输入以下命令
-+ git add . 	//添加文件
-+ git commit -m "注释" //提交到本地
-+ git push origin *local_name*	//*注意*：和第三步一样，local_name替换为自己的名字，格式为LastnameFirstname_LastnameFirstname_A3，要和上面的local_name保持一致,username是vis2014@163.com, password是vis_2014
-
-###7. 这时再次查看github的代码，[Assignment3](https://github.com/vis2014/Assignment3)，在自己的分支里就可以看到自己的代码了
+The visualization of NBA games in season 2013-2014
+This web page showed the progress of last NBA season between the 30 teams located on the NBA map.
+Each match is represented by a circle flying from guest team to home team.
+Golden circles are for those teams winning more than losing, while the lime ones are for the opposite ones.
+Hover on the teams on map to show their history relationship with other teams.
+Hover on the ranking bar chart to highlight each team.
+Besides,you can click on the navigation bar at the bottom to have a further look on each team at Sina Sports.

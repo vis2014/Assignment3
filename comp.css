@@ -1,0 +1,130 @@
+/*****Created by gjy on 2014/11/1.*****/
+body {
+    background: #101010;
+    font-weight: 400;
+    font-size: 1em;
+    font-family: 'Verdana', Arial, sans-serif;
+    overflow: hidden;
+}
+.picBox{
+    position: absolute;
+    /*top: 70%;*/
+    pointer-events: none;
+    top: 90%;
+    /*bottom: 0;*/
+    left: 0;
+    width: 100%;
+    height: 35%;
+    padding: 0;
+    margin: 0;
+    border: 0 solid #ffff00;
+    display: -webkit-box;
+    -webkit-box-sizing: border-box;
+    -webkit-user-select: none;
+    -webkit-box-orient:horizontal;
+    -webkit-box-lines:single;
+    white-space: nowrap;
+    overflow: visible;
+    /*-webkit-box-align: center;*/
+    /*-webkit-box-pack: center;*/
+    opacity: 1;
+    transform-style: preserve-3d;
+    z-index: 10;
+}
+.picBox:hover{
+    transition: top .35s;
+    top: 65%;
+}
+.picBlock{
+    position: relative;
+    /*border: solid red;*/
+    padding: 0;
+    /*border: solid deepskyblue;*/
+    /*border: solid 0 red;*/
+    border: none;
+    margin: 0;
+    overflow: visible;
+    -webkit-transform: scale(1,.75);
+    /*-webkit-transform-origin: 50% 65%;*/
+    -webkit-transform-origin: 50% 100%;
+    transform-style: preserve-3d;
+    left: 0;
+    top: 0;
+    float: left;
+    width: 14.2857%;
+    height: 100%;
+    -webkit-user-select: none;
+    opacity: 1;
+}
+
+
+.picBlock.current{
+    -webkit-transform: scale(1,1);
+    -webkit-transform-origin: 50% 50%;
+    opacity: 1;
+    /*z-index: 100;*/
+    -webkit-transition: -webkit-transform .35s, opacity .35s;
+}
+.picBlock.nearCurrent{
+    -webkit-transform: scale(1,.85);
+    /*-webkit-transform-origin: 50% 65%;*/
+    -webkit-transform-origin: 50% 100%;
+    opacity: 1;
+    /*z-index: 90;*/
+    -webkit-transition: -webkit-transform .35s, opacity .35s;
+}
+
+.picWrap{
+    border: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    /*width: calc(100% - 2px);*/
+    /*height: calc(100% - 2px);*/
+    width: 100%;
+    height: 100%;
+    /*border: solid red;*/
+    /*border: solid blue 0;*/
+    overflow: visible;
+    background-position: 50% 50%;
+    background-size: auto 100%;
+    background-image: url("img/1.jpg");
+    /*cursor: crosshair;*/
+    cursor: auto;
+    opacity: .5;
+    pointer-events: all;
+}
+/*.picBlock.current:{*/
+/*-webkit-animation: cur_lit 1.2s alternate infinite ease-in-out;*/
+/*}*/
+.picWrap:hover{
+    opacity: 1;
+    -webkit-animation: cur_lit 1s alternate infinite ease-in-out;
+}
+@-webkit-keyframes cur_lit {
+    from    {}
+    to      {}
+}
+
+.edge{
+    visibility: hidden;
+    width: 0;
+}
+
+button{
+    -webkit-user-select: none;
+}
+
+@-webkit-keyframes anim_PicBlock1 {
+    0% {transform: translateX(0%);}
+    10% {transform: translateX(-100%);}
+    20% {transform: translateX(-200%);}
+    30% {transform: translateX(-300%);}
+    40% {transform: translateX(-400%);}
+    50% {transform: translateX(-500%);}
+    60% {transform: translateX(-600%);}
+    70% {transform: translateX(-700%);}
+    80% {transform: translateX(-800%);}
+    90% {transform: translateX(-900%);}
+    100% {transform: translateX(-1000%);}
+}
