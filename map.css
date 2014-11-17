@@ -1,0 +1,52 @@
+body{
+    background: url("bg.png") repeat;
+}
+.active{
+    color: blue;
+}
+#info{
+    border: 5px solid lightblue;
+    padding: 10px;
+    float: left;
+    width: 400px;
+    height: 1090px;
+}
+#teach{
+    width: 400px;
+}
+.teachPart{
+    width: 200px;
+    padding-left: 0;
+    float: left;
+    list-style: none;
+}
+#con{
+    width: 400px;
+    height: 200px;
+}
+.conPart{
+    width: 200px;
+    padding-left: 0;
+    float: left;
+    list-style: none;
+}
+.teachPart li i{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    background-color: #123321;
+}
+#u0{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    background-color: #000000;
+}
+#vi{
+    border: 5px solid lightblue;
+    padding: 5px;
+    float: left;
+    width: 1050px;
+}

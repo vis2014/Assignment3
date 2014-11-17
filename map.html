@@ -1,0 +1,192 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ForceGraph</title>
+    <script src="d3.js" charset="utf-8"></script>
+    <script src="jquery-1.11.1.min.js" charset="utf-8"></script>
+    <script src="bootstrap.min.js" charset="utf-8"></script>
+    <script src="topojson.js" charset="utf-8"></script>
+    <script src="datamaps.all.js" charset="utf-8"></script>
+    <script src="data/mapData.js" charset="utf-8"></script>
+    <link type="text/css" rel="stylesheet" href="bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="map.css"/>
+</head>
+<body>
+<div id="container">
+    <div id="info">
+        <h4>颜色示意:</h4>
+        <h5>可视化含义：比去年，该国平均年龄增加或减少多少岁</h5>
+        <br>
+        <br>
+        <div id="con">
+            <ul class="conPart">
+                <li>1. 中国：<span id="CHN"></span></li>
+                <li>2. 印度：<span id="IND"></span></li>
+                <li>3. 美国：<span id="USA"></span></li>
+                <li>4. 印尼：<span id="IDN"></span></li>
+                <li>5. 巴西：<span id="BRA"></span></li>
+                <li>6. 巴基斯坦：<span id="PAK"></span></li>
+                <li>7. 尼日利亚：<span id="NGA"></span></li>
+                <li>8. 孟加拉国：<span id="BGD"></span></li>
+                <li>9. 俄罗斯：<span id="RUS"></span></li>
+                <li>10.日本：<span id="JPN"></span></li>
+            </ul>
+            <ul class="conPart">
+                <li>11. 墨西哥：<span id="MEX"></span></li>
+                <li>12. 菲律宾：<span id="PHL"></span></li>
+                <li>13. 越南：<span id="VNM"></span></li>
+                <li>14. 埃及：<span id="EGY"></span></li>
+                <li>15. 埃塞俄比亚：<span id="ETH"></span></li>
+                <li>16. 德国：<span id="DEU"></span></li>
+                <li>17. 伊朗：<span id="IRN"></span></li>
+                <li>18. 土耳其：<span id="TUR"></span></li>
+                <li>19. 泰国：<span id="THA"></span></li>
+                <li>20.刚果民主共和国：<span id="COD"></span></li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <h5>色块变化含义</h5>
+        <h5><i id="u0"></i>暂无相关数据</h5>
+        <div id="teach">
+            <ul class="teachPart">
+                <li><i id="u1"></i><span>增加0.1+岁</span></li>
+                <li><i id="u2"></i><span>增加0.2+岁</span></li>
+                <li><i id="u3"></i><span>增加0.3+岁</span></li>
+                <li><i id="u4"></i><span>增加0.4+岁</span></li>
+                <li><i id="u5"></i><span>增加0.5+岁</span></li>
+                <li><i id="u6"></i><span>增加0.6+岁</span></li>
+                <li><i id="u7"></i><span>增加0.7+岁</span></li>
+                <li><i id="u8"></i><span>增加0.8+岁</span></li>
+                <li><i id="u9"></i><span>增加0.9+岁</span></li>
+                <li><i id="u10"></i><span>增加1.0+岁</span></li>
+            </ul>
+            <ul class="teachPart">
+                <li><i id="d1"></i><span>持平</span></li>
+                <li><i id="d2"></i><span>减少0.1-岁</span></li>
+                <li><i id="d3"></i><span>减少0.2-岁</span></li>
+                <li><i id="d4"></i><span>减少0.3-岁</span></li>
+                <li><i id="d5"></i><span>减少0.4-岁</span></li>
+                <li><i id="d6"></i><span>减少0.5-岁</span></li>
+                <li><i id="d7"></i><span>减少0.6-岁</span></li>
+                <li><i id="d8"></i><span>减少0.7-岁</span></li>
+                <li><i id="d9"></i><span>减少0.8-岁</span></li>
+                <li><i id="d10"></i><span>减少0.9-岁</span></li>
+            </ul>
+        </div>
+    </div>
+    <div id="vi">
+        <h1 style="text-align: center">世界前二十人口大国寿命变化图</h1>
+        <div id="map"></div>
+        <div id="time" style="width: 1000px;height: 200px">
+            <ul class="pagination" style="margin: 0 auto;width: 571px;display: block">
+                <li id="2003"><a>2003</a></li>
+                <li id="2004"><a>2004</a></li>
+                <li id="2005"><a>2005</a></li>
+                <li id="2006"><a>2006</a></li>
+                <li id="2007"><a>2007</a></li>
+                <li id="2008"><a>2008</a></li>
+                <li id="2009"><a>2009</a></li>
+                <li id="2010"><a>2010</a></li>
+                <li id="2011"><a>2011</a></li>
+                <li id="2012"><a>2012</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    var count=0;
+    var beginYear=2003;
+    var endYear=2012;
+    var basic_choropleth = new Datamap({
+        element: document.getElementById("map"),
+        projection: 'mercator',
+        height: 800, //if not null, datamaps will grab the height of 'element'
+        width: 1000, //if not null, datamaps will grab the width of 'element'
+        fills: {
+            defaultFill: "#123321",
+            authorHasTraveledTo: "#fa0fa0"
+        },
+        data: {
+            "CHN":{ fillKey: "authorHasTraveledTo" },
+            "IND":{ fillKey: "authorHasTraveledTo" },
+            "USA":{ fillKey: "authorHasTraveledTo" },
+            "IDN":{ fillKey: "authorHasTraveledTo" },
+            "BRA":{ fillKey: "authorHasTraveledTo" },
+            "PAK":{ fillKey: "authorHasTraveledTo" },
+            "NGA":{ fillKey: "authorHasTraveledTo" },
+            "BGD":{ fillKey: "authorHasTraveledTo" },
+            "RUS":{ fillKey: "authorHasTraveledTo" },
+            "JPN":{ fillKey: "authorHasTraveledTo" },
+            "MEX":{ fillKey: "authorHasTraveledTo" },
+            "PHL":{ fillKey: "authorHasTraveledTo" },
+            "VNM":{ fillKey: "authorHasTraveledTo" },
+            "EGY":{ fillKey: "authorHasTraveledTo" },
+            "ETH":{ fillKey: "authorHasTraveledTo" },
+            "DEU":{ fillKey: "authorHasTraveledTo" },
+            "IRN":{ fillKey: "authorHasTraveledTo" },
+            "TUR":{ fillKey: "authorHasTraveledTo" },
+            "THA":{ fillKey: "authorHasTraveledTo" },
+            "COD":{ fillKey: "authorHasTraveledTo" }
+        }
+    });
+
+    var colors = d3.scale.category10();
+    for(var i=1;i<11;i++){
+        $("#u"+i).css("background-color",up[i-1]);
+    }
+    for(var i=1;i<11;i++){
+        $("#d"+i).css("background-color",down[i-1]);
+    }
+
+
+    var update=window.setInterval(function() {
+        count++;
+        $(".pagination").children("li").removeClass("active");
+        var year=count+(beginYear-1);
+        if(year==(endYear+1)){
+            count=1;
+            year=count+beginYear-1;
+        }
+        $("#"+year).addClass("active");
+        basic_choropleth.updateChoropleth({
+            "CHN":returnColor("CHN"),
+            "IND":returnColor("IND"),
+            "USA":returnColor("USA"),
+            "IDN":returnColor("IDN"),
+            "BRA":returnColor("BRA"),
+            "PAK":returnColor("PAK"),
+            "NGA":returnColor("NGA"),
+            "BGD":returnColor("BGD"),
+            "RUS":returnColor("RUS"),
+            "JPN":returnColor("JPN"),
+            "MEX":returnColor("MEX"),
+            "PHL":returnColor("PHL"),
+            "VNM":returnColor("VNM"),
+            "EGY":returnColor("EGY"),
+            "ETH":returnColor("ETH"),
+            "DEU":returnColor("DEU"),
+            "IRN":returnColor("IRN"),
+            "TUR":returnColor("TUR"),
+            "THA":returnColor("THA"),
+            "COD":returnColor("COD")
+        });
+    }, 2000);
+
+    function returnColor(country){
+        $("#"+country).html(mapData[country][count]);
+        var test=mapData[country][count]-mapData[country][count-1];
+        test=parseInt(test*10);
+        var color;
+        if(test>0){
+            color=up[test];
+        }else{
+            test=test*(-1);
+            color=down[test];
+        }
+        $("#"+country).css("color",color);
+        return color;
+    }
+</script>
+</body>
+</html>
