@@ -11,113 +11,129 @@ function initchart() {
 }
 
 var brand=["韩国SZ",
-"Zara",
-"欧时力",
-"Girder",
-"哥弟",
-"秋水伊人",
-"VoerModa",
-"韩都衣舍",
-"ONLY",
-"地素",
-"红蜻蜓",
-"达芙妮",
-"古奇天伦",
-"莫蕾蔻蕾",
-"卓尼诗",
-"意尔康",
-"思加图",
-"热风",
-"百丽",
-"依思Q",
-"七匹狼",
-"战地吉普",
-"美斯特邦威",
-"海澜之家",
-"九牧王",
-"雅戈尔",
-"杰克琼斯",
-"马克华菲",
-"花花公子",
-"森马",
-"花花公子",
-"奥康",
-"红蜻蜓男",
-"爱步",
-"骆驼",
-"木林森",
-"意尔康",
-"公牛世家",
-"回力",
-"富贵鸟",
-"美的",
-"九阳",
-"苏泊尔",
-"惠人",
-"小熊",
-"沁园",
-"3M",
-"飞利浦",
-"格兰仕",
-"SKG",
-"美的大",
-"海尔",
-"海信",
-"TCL",
-"WONDERFLOWER",
-"乐视TV",
-"三星",
-"格力",
-"方太",
-"科龙",
-"周大福",
-"周生生",
-"佐卡伊",
-"珂兰",
-"黛米",
-"玉领",
-"米莱",
-"七彩云南",
-"六福珠宝",
-"恒久之星",
-"蒂凡尼",
-"宝诚",
-"施华洛世奇",
-"T400",
-"银千惠",
-"银时代",
-"伊泰莲娜",
-"久爱",
-"西戴尔",
-"禅心阁"
+    "Zara",
+    "欧时力",
+    "Girder",
+    "哥弟",
+    "秋水伊人",
+    "VoerModa",
+    "韩都衣舍",
+    "ONLY",
+    "地素",
+    "红蜻蜓",
+    "达芙妮",
+    "古奇天伦",
+    "莫蕾蔻蕾",
+    "卓尼诗",
+    "意尔康",
+    "思加图",
+    "热风",
+    "百丽",
+    "依思Q",
+    "七匹狼",
+    "战地吉普",
+    "美斯特邦威",
+    "海澜之家",
+    "九牧王",
+    "雅戈尔",
+    "杰克琼斯",
+    "马克华菲",
+    "花花公子",
+    "森马",
+    "花花公子",
+    "奥康",
+    "红蜻蜓男",
+    "爱步",
+    "骆驼",
+    "木林森",
+    "意尔康",
+    "公牛世家",
+    "回力",
+    "富贵鸟",
+    "美的",
+    "九阳",
+    "苏泊尔",
+    "惠人",
+    "小熊",
+    "沁园",
+    "3M",
+    "飞利浦",
+    "格兰仕",
+    "SKG",
+    "美的大",
+    "海尔",
+    "海信",
+    "TCL",
+    "WONDERFLOWER",
+    "乐视TV",
+    "三星",
+    "格力",
+    "方太",
+    "科龙",
+    "周大福",
+    "周生生",
+    "佐卡伊",
+    "珂兰",
+    "黛米",
+    "玉领",
+    "米莱",
+    "七彩云南",
+    "六福珠宝",
+    "恒久之星",
+    "蒂凡尼",
+    "宝诚",
+    "施华洛世奇",
+    "T400",
+    "银千惠",
+    "银时代",
+    "伊泰莲娜",
+    "久爱",
+    "西戴尔",
+    "禅心阁"
 ];
 
 
-var mingzi={
-	"nzz":"男装",
-	"nz":"女装",
-	"nzx":"男鞋",
-	"nx":"女鞋",
-	"zb":"珠宝",
-	"sp":"首饰",
-	"cd":"厨电",
-	"djd":"家电"
+var classmap={
+    "nzz":"男装",
+    "nz":"女装",
+    "nzx":"男鞋",
+    "nx":"女鞋",
+    "zb":"珠宝",
+    "sp":"首饰",
+    "cd":"厨电",
+    "djd":"家电"
 
 };
 
+var classmap2={
+    "nzz":"服饰",
+    "nz":"服饰",
+    "nzx":"服饰",
+    "nx":"服饰",
+    "zb":"饰品",
+    "sp":"饰品",
+    "cd":"电器",
+    "djd":"电器"
+};
+
 function qidong(data) {
-		  
-		  d3.selectAll(".foreground path").classed("fadea", true);
-		  d3.select("#"+data.key).classed("fadea",false);
-		}
+
+    d3.selectAll(".foreground path").classed("fadea", true);
+    d3.select("#"+data.key).classed("fadea",false);
+}
 
 function mouseover(data) {
-   // chart.refreshChart(data);
+    // chart.refreshChart(data);
     d3.select("#skills-chart-breadcrumb").classed("hidden", false);
     if(data.children.length === 1)
-		qidong(data);
-	else
-		d3.selectAll(".foreground path").classed("fadea", false);
+        qidong(data);
+    else if(data.children.length>1 && data.key!==undefined)
+    {
+        d3.selectAll(".foreground path").classed("fadea", true);
+        d3.selectAll("."+data.key).classed("fadea",false);
+    }
+    else
+        d3.selectAll(".foreground path").classed("fadea", false);
     var c = getcrumbpath(data);
     i(c);
     d3
@@ -186,20 +202,20 @@ function i(a) {
     d
         .append("svg:polygon")
         .attr("points", h)
-        .style("fill", function (a) { return a._color }), 
-    d
-        .append("svg:text")
-        .attr("x", r.w / 2 + 2)
-        .attr("y", r.h / 2)
-        .attr("dy", "0.35em")
-        .attr("text-anchor", "middle")
-        .attr("class", "breadcumb-text")
-        .style("fill", function (a) { return getcolor(d3.rgb(a._color)) < 150 ? "#fff" : "#000" })
-        .text(function (a) { return a.key }),
-    c
-        .attr("transform", function (a, b) { return "translate(" + b * (r.w + r.s) + ", 0)" }), 
-    c.exit().remove(), 
-    d3.select(".trail").style("visibility", "")
+        .style("fill", function (a) { return a._color }),
+        d
+            .append("svg:text")
+            .attr("x", r.w / 2 + 2)
+            .attr("y", r.h / 2)
+            .attr("dy", "0.35em")
+            .attr("text-anchor", "middle")
+            .attr("class", "breadcumb-text")
+            .style("fill", function (a) { return getcolor(d3.rgb(a._color)) < 150 ? "#fff" : "#000" })
+            .text(function (a) { return a.key }),
+        c
+            .attr("transform", function (a, b) { return "translate(" + b * (r.w + r.s) + ", 0)" }),
+        c.exit().remove(),
+        d3.select(".trail").style("visibility", "")
 }
 
 function getcolor(color) {
@@ -229,261 +245,261 @@ var l;
 var chart = function (d3) {
 
 
-    function processdata(data) {
-        var b = [],
-            c = 0;
-        return data._proficiency.forEach(function (a) {
-            c <= i.length && (b.push({
-                p: a,
-                date: i[c]
-            }), c++)
-        }), b
-    }
-	
-    function c(b, c) {
-        j.domain(d3.extent(b, function (a) { return a.date }));
-        k
-            .domain([0, 100]), cpath
-            .append("g")
-            .attr("class", "x-axis axis")
-            .attr("transform", "translate(0," + h + ")")
-            .call(bottomtick)
-            .append("text")
-            .attr("x", 450)
-            .attr("y", -8)
-            .style("text-anchor", "end")
-            .text("Time"), cpath
-            .append("g")
-            .attr("class", "y-axis axis")
-            .call(lefttick)
-            .append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", ".91em")
-            .style("text-anchor", "end")
-            .text("Proficiency"), cpath
-            .append("path")
-            .datum(b)
-            .attr("class", "line")
-            .attr("id", "skills-chart-line")
-            .attr("d", n)
-            .attr("stroke", function () { return c._color })
-    }
-	
-	
-    function refreshChart(data) {
-        var e = processdata(data);
+        function processdata(data) {
+            var b = [],
+                c = 0;
+            return data._proficiency.forEach(function (a) {
+                c <= i.length && (b.push({
+                    p: a,
+                    date: i[c]
+                }), c++)
+            }), b
+        }
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		var species = ["sp", "cd", "djd", "zb", "nx", "nzx", "nz", "nzz"],
-            traits = ["money/w", "itemNumber/w", "customers/w","money/item","money/customer","item/customer"];
+        function c(b, c) {
+            j.domain(d3.extent(b, function (a) { return a.date }));
+            k
+                .domain([0, 100]), cpath
+                .append("g")
+                .attr("class", "x-axis axis")
+                .attr("transform", "translate(0," + h + ")")
+                .call(bottomtick)
+                .append("text")
+                .attr("x", 450)
+                .attr("y", -8)
+                .style("text-anchor", "end")
+                .text("Time"), cpath
+                .append("g")
+                .attr("class", "y-axis axis")
+                .call(lefttick)
+                .append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", ".91em")
+                .style("text-anchor", "end")
+                .text("Proficiency"), cpath
+                .append("path")
+                .datum(b)
+                .attr("class", "line")
+                .attr("id", "skills-chart-line")
+                .attr("d", n)
+                .attr("stroke", function () { return c._color })
+        }
 
 
-		var m = [40, 80, 100, 80],
-			w = 640 - m[1] - m[3],
-			h = 500 - m[0] - m[2];
-
-		var x = d3.scale.ordinal().domain(traits).rangePoints([0, w]),
-			y = {};
-
-		var line = d3.svg.line(),
-			axis = d3.svg.axis().orient("left"),
-			foreground;
-		
-		var svg = d3.select(".skills-chart").append("svg:svg")
-			.attr("x", 600)
-			.attr("y", 200)
-			.attr("width", w + m[1] + m[3])
-			.attr("height", h + m[0] + m[2])
-		  .append("svg:g")
-			.attr("transform", "translate(" + m[3] + "," + m[0] + ")");
-
-		d3.csv("brandN.csv", function(flowers) {
-
-		  // Create a scale and brush for each trait.
-		  traits.forEach(function(d) {
-			// Coerce values to numbers.
-			flowers.forEach(function(p) { p[d] = +p[d]; });
-
-			y[d] = d3.scale.linear()
-				.domain(d3.extent(flowers, function(p) { return p[d]; }))
-				.range([h, 0]);
-
-			y[d].brush = d3.svg.brush()
-				.y(y[d])
-				.on("brush", brush);
-		 });
-
-		  // Add a legend.
-		  var legend = svg.selectAll("g.legend")
-			  .data(species)
-			.enter().append("svg:g")
-			  .attr("class", "legend")
-			  .attr("transform", function(d, i) { return "translate(500," + (i * 15 + 0) + ")"; });
-
-		  legend.append("svg:line")
-			  .attr("class", String)
-			  .attr("x2", 8);
-
-		  legend.append("svg:text")
-			  .attr("x", 12)
-			  .attr("dy", ".31em")
-			  .text(function(d) { return mingzi[d]; });
-
-		  // Add foreground lines.
-		  foreground = svg.append("svg:g")
-			  .attr("class", "foreground")
-			.selectAll("path")
-			  .data(flowers)
-			.enter().append("svg:path")
-			  .attr("d", path)
-			  .attr("id",function(d,i){return brand[i];})
-			  .attr("class", function(d) { return d.species; });
-
-		  // Add a group element for each trait.
-		  var g = svg.selectAll(".trait")
-			  .data(traits)
-			.enter().append("svg:g")
-			  .attr("class", "trait")
-			  .attr("transform", function(d) { return "translate(" + x(d) + ")"; })
-			  .call(d3.behavior.drag()
-			  .origin(function(d) { return {x: x(d)}; })
-			  .on("dragstart", dragstart)
-			  .on("drag", drag)
-			  .on("dragend", dragend));
-			  
-
-		  // Add an axis and title.
-		  g.append("svg:g")
-			  .attr("class", "axis")
-			  .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
-			.append("svg:text")
-			  .attr("text-anchor", "middle")
-			  .attr("y", -9)
-			  .text(String);
-
-		  // Add a brush for each axis.
-		  g.append("svg:g")
-			  .attr("class", "brush")
-			  .each(function(d) { d3.select(this).call(y[d].brush); })
-			.selectAll("rect")
-			  .attr("x", -8)
-			  .attr("width", 16);
-
-		  function dragstart(d) {
-			i = traits.indexOf(d);
-		  }
-
-		  function drag(d) {
-			x.range()[i] = d3.event.x;
-			traits.sort(function(a, b) { return x(a) - x(b); });
-			g.attr("transform", function(d) { return "translate(" + x(d) + ")"; });
-			foreground.attr("d", path);
-		  }
-
-		  function dragend(d) {
-			x.domain(traits).rangePoints([0, w]);
-			var t = d3.transition().duration(500);
-			t.selectAll(".trait").attr("transform", function(d) { return "translate(" + x(d) + ")"; });
-			t.selectAll(".foreground path").attr("d", path);
-		  }
-		});
-
-		// Returns the path for a given data point.
-		function path(d) {
-		  return line(traits.map(function(p) { return [x(p), y[p](d[p])]; }));
-		}
-
-		// Handles a brush event, toggling the display of foreground lines.
-		function brush() {
-		  var actives = traits.filter(function(p) { return !y[p].brush.empty(); }),
-			  extents = actives.map(function(p) { return y[p].brush.extent(); });
-		  foreground.classed("fade", function(d) {
-			return !actives.every(function(p, i) {
-			  return extents[i][0] <= d[p] && d[p] <= extents[i][1];
-			});
-		  });
-		}
+        function refreshChart(data) {
+            var e = processdata(data);
 
 
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
+
+
+            var species = ["sp", "cd", "djd", "zb", "nx", "nzx", "nz", "nzz"],
+                traits = ["money/w", "itemNumber/w", "customers/w","money/item","money/customer","item/customer"];
+
+
+            var m = [40, 80, 100, 80],
+                w = 640 - m[1] - m[3],
+                h = 500 - m[0] - m[2];
+
+            var x = d3.scale.ordinal().domain(traits).rangePoints([0, w]),
+                y = {};
+
+            var line = d3.svg.line(),
+                axis = d3.svg.axis().orient("left"),
+                foreground;
+
+            var svg = d3.select(".skills-chart").append("svg:svg")
+                .attr("x", 600)
+                .attr("y", 200)
+                .attr("width", w + m[1] + m[3])
+                .attr("height", h + m[0] + m[2])
+                .append("svg:g")
+                .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+
+            d3.csv("brandN.csv", function(flowers) {
+
+                // Create a scale and brush for each trait.
+                traits.forEach(function(d) {
+                    // Coerce values to numbers.
+                    flowers.forEach(function(p) { p[d] = +p[d]; });
+
+                    y[d] = d3.scale.linear()
+                        .domain(d3.extent(flowers, function(p) { return p[d]; }))
+                        .range([h, 0]);
+
+                    y[d].brush = d3.svg.brush()
+                        .y(y[d])
+                        .on("brush", brush);
+                });
+
+                // Add a legend.
+                var legend = svg.selectAll("g.legend")
+                    .data(species)
+                    .enter().append("svg:g")
+                    .attr("class", "legend")
+                    .attr("transform", function(d, i) { return "translate(500," + (i * 15 + 0) + ")"; });
+
+                legend.append("svg:line")
+                    .attr("class", String)
+                    .attr("x2", 8);
+
+                legend.append("svg:text")
+                    .attr("x", 12)
+                    .attr("dy", ".31em")
+                    .text(function(d) { return classmap[d]; });
+
+                // Add foreground lines.
+                foreground = svg.append("svg:g")
+                    .attr("class", "foreground")
+                    .selectAll("path")
+                    .data(flowers)
+                    .enter().append("svg:path")
+                    .attr("d", path)
+                    .attr("id",function(d,i){return brand[i];})
+                    .attr("class", function(d) { return d.species+" "+classmap[d.species]+" "+ classmap2[d.species]; });
+
+                // Add a group element for each trait.
+                var g = svg.selectAll(".trait")
+                    .data(traits)
+                    .enter().append("svg:g")
+                    .attr("class", "trait")
+                    .attr("transform", function(d) { return "translate(" + x(d) + ")"; })
+                    .call(d3.behavior.drag()
+                        .origin(function(d) { return {x: x(d)}; })
+                        .on("dragstart", dragstart)
+                        .on("drag", drag)
+                        .on("dragend", dragend));
+
+
+                // Add an axis and title.
+                g.append("svg:g")
+                    .attr("class", "axis")
+                    .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
+                    .append("svg:text")
+                    .attr("text-anchor", "middle")
+                    .attr("y", -9)
+                    .text(String);
+
+                // Add a brush for each axis.
+                g.append("svg:g")
+                    .attr("class", "brush")
+                    .each(function(d) { d3.select(this).call(y[d].brush); })
+                    .selectAll("rect")
+                    .attr("x", -8)
+                    .attr("width", 16);
+
+                function dragstart(d) {
+                    i = traits.indexOf(d);
+                }
+
+                function drag(d) {
+                    x.range()[i] = d3.event.x;
+                    traits.sort(function(a, b) { return x(a) - x(b); });
+                    g.attr("transform", function(d) { return "translate(" + x(d) + ")"; });
+                    foreground.attr("d", path);
+                }
+
+                function dragend(d) {
+                    x.domain(traits).rangePoints([0, w]);
+                    var t = d3.transition().duration(500);
+                    t.selectAll(".trait").attr("transform", function(d) { return "translate(" + x(d) + ")"; });
+                    t.selectAll(".foreground path").attr("d", path);
+                }
+            });
+
+            // Returns the path for a given data point.
+            function path(d) {
+                return line(traits.map(function(p) { return [x(p), y[p](d[p])]; }));
+            }
+
+            // Handles a brush event, toggling the display of foreground lines.
+            function brush() {
+                var actives = traits.filter(function(p) { return !y[p].brush.empty(); }),
+                    extents = actives.map(function(p) { return y[p].brush.extent(); });
+                foreground.classed("fade", function(d) {
+                    return !actives.every(function(p, i) {
+                        return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+                    });
+                });
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             //f = d3.select("#skills-chart-line");
-        //null === f[0][0] 
-        //? c(e, data) 
-       // : f
+            //null === f[0][0]
+            //? c(e, data)
+            // : f
             //.datum(e)
             //.attr("d", n)
             //.attr("stroke", function () { return data._color })
-    }
-	
-    var chart = {},
-        rect = {
-            top: 20,
-            right: 20,
-            bottom: 30,
-            left: 50
-        },
-        g = 500 - rect.left - rect.right,
-        h = 400 - rect.top - rect.bottom,
-        i = [1999, 2000],
-        j = d3.scale.linear().range([0, g]),
-        k = d3.scale.linear().range([h, 0]),
-        bottomtick = d3
-            .svg
-            .axis()
-            .scale(j)
-            .tickValues([1999,2000])
-            .tickFormat(d3.format(".0f"))
-            .tickPadding(10)
-            .tickSize(0)
-            .orient("bottom"),
-        lefttick = d3
-            .svg
-            .axis()
-            .scale(k)
-            .tickSize(0)
-            .tickPadding(10)
-            //.tickValues([20, 40, 60, 80, 100])
-            .orient("left"),
-        n = d3.svg.line().interpolate("basis").x(function (a) {
-            return j(a.date)
-        }).y(function (a) {
-            return k(a.p)
-        })
-        ;
+        }
+
+        var chart = {},
+            rect = {
+                top: 20,
+                right: 20,
+                bottom: 30,
+                left: 50
+            },
+            g = 500 - rect.left - rect.right,
+            h = 400 - rect.top - rect.bottom,
+            i = [1999, 2000],
+            j = d3.scale.linear().range([0, g]),
+            k = d3.scale.linear().range([h, 0]),
+            bottomtick = d3
+                .svg
+                .axis()
+                .scale(j)
+                .tickValues([1999,2000])
+                .tickFormat(d3.format(".0f"))
+                .tickPadding(10)
+                .tickSize(0)
+                .orient("bottom"),
+            lefttick = d3
+                .svg
+                .axis()
+                .scale(k)
+                .tickSize(0)
+                .tickPadding(10)
+                //.tickValues([20, 40, 60, 80, 100])
+                .orient("left"),
+            n = d3.svg.line().interpolate("basis").x(function (a) {
+                return j(a.date)
+            }).y(function (a) {
+                return k(a.p)
+            })
+            ;
         chart.refreshChart = refreshChart;
         return chart;
     }
-	
-	(d3),
+
+    (d3),
     width = 450,
     height = 450,
     rad = Math.min(width, height) / Math.PI - 25,
@@ -525,7 +541,7 @@ var t = function (a, b) {
         .sort(null)
         .size([2 * Math.PI, rad])
         .children(function (a) {
-            return a.value instanceof Array 
+            return a.value instanceof Array
                 ? (a._proficiency = a.value, d3.entries([a.value[a.value.length - 1]]))
                 : (a._proficiency = u(a.value), isNaN(a.value) ? d3.entries(a.value) : null)
         })
@@ -553,7 +569,7 @@ path
     .attr("stroke", "#fff")
     .attr("fill", function (a) { return a._color = q(a), a._color })
     .attr("fill-rule", "evenodd").attr("display", function (a) { return a.children ? null : "none" })
-    .on("mouseover", mouseover); 
+    .on("mouseover", mouseover);
 path.
     append("svg:text")
     .attr("transform", function (a) {
@@ -563,11 +579,11 @@ path.
     .attr("x", function (a) { return rad / Math.PI * a.depth})
     .attr("dx", "6").attr("dy", ".1em").text(function (a) { return a.key })
     .attr("display", function (a) { return a.children ? null : "none" })
-    .on("mouseover", mouseover); 
+    .on("mouseover", mouseover);
 d3
     .select(".skills-sunburst")
-    .on("mouseleave", mouseleave); 
-l = path.node().__data__.value; 
+    .on("mouseleave", mouseleave);
+l = path.node().__data__.value;
 sunburst
     .append("circle")
     .attr("r", rad / Math.PI)
