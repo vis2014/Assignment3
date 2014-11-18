@@ -1,0 +1,7 @@
+g text:hover { opacity: 0.7 ;}
+div#container{width:1366px}
+div#container{height: 600px}
+div#header {background-color:lightcyan;text-align: center; }
+div#content {background-color:#EEEEEE; height:600px; width:1366px; float:left;}
+div#menu {background-color:#EfEffE; height:50px; width:1366px; float:left;}
+h1 {margin-bottom:0; font-size:28px;}
