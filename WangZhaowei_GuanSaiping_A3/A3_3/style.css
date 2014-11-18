@@ -1,0 +1,27 @@
+div#container{width:1500px}
+div#header {background-color:#99bbbb;}
+div#menu {background-color:#EfEffE; height:600px; width:400px; float:left;}
+div#content {height:600px; width:900px; float:left;}
+div#footer {background-color:#99bbbb; clear:both; text-align:center;}
+h1 {margin-bottom:0;}
+h2 {margin-bottom:0; font-size:14px;}
+ul {margin:0;}
+li {list-style:none;}
+
+
+.pumpkin {
+fill: yellow;
+stroke: orange;
+stroke-width: 5;
+}
+
+div.bar {
+display: inline-block;
+width: 20px;
+height: 75px;
+background-color: teal;
+margin-right: 2px;
+}
+
+g text:hover { opacity: .7 ;}
+
