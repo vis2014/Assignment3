@@ -1,6 +1,6 @@
 ﻿# Theme Bomb！
  
-###1. Link to Assignmen23:
+###1. Link to Assignment3:
 http://211.147.15.14/UCAS_14_Fall/index.php/Zhangyuan_Mazhenzhen_A3
 
 ###2. Dataset:
